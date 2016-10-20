@@ -3,7 +3,7 @@ include '../config.php';
 $jabatan		= $_POST['jabatan'];
 
 $kueri 			= mysqli_query($conn,"
-				  INSERT INTO jabatan (id,jabatan) 
+				  INSERT INTO jabatan (jabatan_id,jabatan) 
 				  VALUES ('','$jabatan')");
 
 if($kueri) {

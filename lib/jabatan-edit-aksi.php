@@ -5,8 +5,8 @@ $jabatan	 	 	= $_POST['jabatan'];
 
 $kueri 				= mysqli_query($conn,"
 					  UPDATE jabatan
-					  SET jabatan 	= '$jabatan'
-					  WHERE id 		= '$id'
+					  SET jabatan 			= '$jabatan'
+					  WHERE jabatan_id 		= '$id'
 					  ");
 
 if($kueri) {

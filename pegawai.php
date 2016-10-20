@@ -64,7 +64,7 @@ $slug       = "Pegawai";
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM user
                                                           JOIN jabatan
-                                                          ON user.jabatan = jabatan.id
+                                                          ON user.jabatan = jabatan.jabatan_id
                                                           ORDER BY user.id
                                                           DESC
                                                           ");

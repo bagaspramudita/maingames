@@ -8,15 +8,6 @@ $nav        = "Data Master";
 $page       = "Jabatan";
 $slug       = "jabatan";
 $nav1       = "Edit";
-
-// Begin Edit Library
-$id         = abs($_GET['id']);
-$kueri      = mysqli_query($conn,"
-              SELECT * FROM jabatan
-              WHERE id = '$id'
-              ");
-$tampil     = mysqli_fetch_array($kueri);
-// End Edit Library
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +47,17 @@ $tampil     = mysqli_fetch_array($kueri);
                                             <span class="caption-subject font-green-sharp bold uppercase"><?= $nav1." ".$page; ?></span>
                                         </div>
                                     </div>
+                                    <?php
+                                    // Begin Edit Library
+                                    $id         = abs($_GET['id']);
+                                    $kueri      = mysqli_query($conn,"
+                                                  SELECT * FROM jabatan
+                                                  WHERE jabatan_id = '$id'
+                                                  ");
+
+                                    $tampil     = mysqli_fetch_array($kueri);
+                                    // End Edit Library
+                                    ?>
                                     <div class="portlet-body">
                                     <!-- Mulai Konten -->
                                         <form action="lib/<?= strtolower($slug); ?>-<?= strtolower($nav1); ?>-aksi.php" class="form-horizontal" method="POST">
@@ -66,7 +68,7 @@ $tampil     = mysqli_fetch_array($kueri);
                                                     </div>
                                                     <div class="col-md-4">
                                                         <!-- EDIT ID -->
-                                                        <input type="hidden" name="id" value="<?= $tampil['id']; ?>">
+                                                        <input type="hidden" name="id" value="<?= $tampil['jabatan_id']; ?>">
                                                         <!-- EDIT ID -->
                                                         <input type="text" name="jabatan" value="<?= $tampil['jabatan']; ?>" required="required" class="form-control">        
                                                     </div>
