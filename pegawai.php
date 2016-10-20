@@ -52,8 +52,10 @@ $slug       = "Pegawai";
                                                 <tr>
                                                     <th style="text-align:center" width="3%">No</th>
                                                     <th style="text-align:center" width="6%">NIP</th>
-                                                    <th style="text-align:center" width="11%">Nama</th>
+                                                    <th style="text-align:center" width="15%">Nama</th>
+                                                    <th style="text-align:center" width="11%">Jabatan</th>
                                                     <th style="text-align:center" width="11%">Tanggal Lahir</th>
+                                                    <th style="text-align:center" width="11%">Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -61,13 +63,15 @@ $slug       = "Pegawai";
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM user
-                                                          ORDER BY id
+                                                          JOIN jabatan
+                                                          ON user.jabatan = jabatan.id
+                                                          ORDER BY user.id
                                                           DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
                                             if($cekdata == 0) { ?>
                                                 <tr>
-                                                    <td align="center" colspan="3">Belum Ada Data. &nbsp;
+                                                    <td align="center" colspan="6">Belum Ada Data. &nbsp;
                                                         <a href="<?= strtolower($slug); ?>-tambah.php" class="btn blue">
                                                         <i class="fa fa-plus"></i> Tambahkan</a>
                                                         </td>
@@ -78,7 +82,8 @@ $slug       = "Pegawai";
                                                     <td class="text-center" align="center"><?= $no; ?></td>
                                                     <td class="text-center"><strong><?= $tampil['nip']; ?></strong></td>
                                                     <td><?= $tampil['nama']; ?></td>
-                                                    <td><?= $tampil['tanggal_lahir']." ".$tampil['bulan_lahir']." ".$tampil['tahun_lahir']; ?></td>
+                                                    <td class="text-center"><?= $tampil['jabatan']; ?></td>
+                                                    <td class="text-center"><?= $tampil['tanggal_lahir']." ".$tampil['bulan_lahir']." ".$tampil['tahun_lahir']; ?></td>
                                                     <td align="center">
                                                         <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
                                                         <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
