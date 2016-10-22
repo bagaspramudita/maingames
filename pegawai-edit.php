@@ -69,7 +69,7 @@ $nav1       = "Edit";
                                     // End Edit Library
                                     ?>
                                     <!-- Mulai Konten -->
-                                        <form action="lib/<?= strtolower($slug); ?>-<?= strtolower($nav1); ?>-aksi.php" class="form-horizontal" method="POST">
+                                        <form enctype="multipart/form-data" action="lib/<?= strtolower($slug); ?>-<?= strtolower($nav1); ?>-aksi.php" class="form-horizontal" method="POST">
                                             <div class="form-body">
                                                 <div class="form-group">
                                                     <!-- EDIT ID -->

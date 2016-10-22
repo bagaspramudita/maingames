@@ -13,6 +13,7 @@ $slug       = "Pegawai";
     <head>
         <meta charset="utf-8" />
         <title><?= $page; ?></title>
+        
         <?php include 'meta-header.php'; ?>
 	</head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
@@ -47,7 +48,7 @@ $slug       = "Pegawai";
                                     </div>
                                     <div class="portlet-body">
                                     <?php include 'lib/notifikasi.php'; ?>
-                                        <table class="table table-striped table-bordered table-hover" id="sample_2">
+                                        <table class="table table-striped table-bordered table-hover" id="tabeldata">
                                             <thead>
                                                 <tr>
                                                     <th style="text-align:center" width="3%">No</th>
@@ -103,5 +104,10 @@ $slug       = "Pegawai";
             <?php include 'footer-global.php'; ?>
         </div>
         <?php include 'js-global.php'; ?>
+        <script>
+        $(document).ready(function() {
+            $('#tabeldata').DataTable();
+        } );
+        </script>
     </body>
 </html>
