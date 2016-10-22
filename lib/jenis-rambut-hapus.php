@@ -4,7 +4,7 @@ $id 	 			= abs($_GET['id']);
 
 $kueri 				= mysqli_query($conn,"
 			  		DELETE FROM jenis_rambut
-			  		WHERE id = '$id'
+			  		WHERE jenis_id = '$id'
 			  		");
 
 if($kueri) {

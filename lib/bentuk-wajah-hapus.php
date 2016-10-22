@@ -1,10 +1,10 @@
 <?php
 include '../config.php';
-$bentuk_wajah		= abs($_GET['id']);
+$id 				= abs($_GET['id']);
 
 $kueri 				= mysqli_query($conn,"
 			  		DELETE FROM bentuk_wajah
-			  		WHERE id = '$bentuk_wajah'
+			  		WHERE bentuk_id = '$id'
 			  		");
 
 if($kueri) {

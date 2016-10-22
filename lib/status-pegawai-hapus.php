@@ -4,7 +4,7 @@ $id 	 			= abs($_GET['id']);
 
 $kueri 				= mysqli_query($conn,"
 			  		DELETE FROM status_pegawai
-			  		WHERE id = '$id'
+			  		WHERE status_id = '$id'
 			  		");
 
 if($kueri) {

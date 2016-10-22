@@ -60,7 +60,7 @@ $slug       = "bentuk-wajah";
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM bentuk_wajah
-                                                          ORDER BY id
+                                                          ORDER BY bentuk_id
                                                           DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
@@ -77,8 +77,8 @@ $slug       = "bentuk-wajah";
                                                     <td align="center"><?= $no; ?></td>
                                                     <td><?= $tampil['bentuk']; ?></td>
                                                     <td align="center">
-                                                        <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
-                                                        <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
+                                                        <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['bentuk_id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
+                                                        <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['bentuk_id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } }?>

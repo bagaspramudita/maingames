@@ -5,8 +5,8 @@ $status_pegawai	 	= $_POST['status_pegawai'];
 
 $kueri 				= mysqli_query($conn,"
 					  UPDATE status_pegawai
-					  SET status_pegawai 	= '$status_pegawai'
-					  WHERE id 				= '$id'
+					  SET status_pegawai 	 		= '$status_pegawai'
+					  WHERE status_id 				= '$id'
 					  ");
 
 if($kueri) {

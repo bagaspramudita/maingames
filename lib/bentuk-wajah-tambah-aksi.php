@@ -3,7 +3,7 @@ include '../config.php';
 $bentuk_wajah		= $_POST['bentuk_wajah'];
 
 $kueri 		= mysqli_query($conn,"
-			  INSERT INTO bentuk_wajah (id,bentuk) 
+			  INSERT INTO bentuk_wajah (bentuk_id,bentuk) 
 			  VALUES ('','$bentuk_wajah')");
 
 if($kueri) {

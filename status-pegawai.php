@@ -60,7 +60,7 @@ $slug       = "status-pegawai";
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM status_pegawai
-                                                          ORDER BY id
+                                                          ORDER BY status_id
                                                           DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
@@ -77,8 +77,8 @@ $slug       = "status-pegawai";
                                                     <td align="center"><?= $no; ?></td>
                                                     <td><?= $tampil['status_pegawai']; ?></td>
                                                     <td align="center">
-                                                        <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
-                                                        <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
+                                                        <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['status_id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
+                                                        <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['status_id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } }?>

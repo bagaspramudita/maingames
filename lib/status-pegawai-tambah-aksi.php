@@ -3,7 +3,7 @@ include '../config.php';
 $status_pegawai		= $_POST['status_pegawai'];
 
 $kueri 				= mysqli_query($conn,"
-					  INSERT INTO status_pegawai (id,status_pegawai) 
+					  INSERT INTO status_pegawai (status_id,status_pegawai) 
 					  VALUES ('','$status_pegawai')
 					  ");
 

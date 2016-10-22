@@ -109,7 +109,7 @@ $nav1       = "Tambah";
                                                         <?php
                                                         $kueri      = mysqli_query($conn,"SELECT * FROM agama");
                                                         while ($tampil = mysqli_fetch_array($kueri)) { ?>
-                                                            <option value="<?= $tampil['id']; ?>"><?= $tampil['agama']; ?></option>
+                                                            <option value="<?= $tampil['agama_id']; ?>"><?= $tampil['agama']; ?></option>
                                                         <?php } ?>
                                                         </select>
                                                     </div>
@@ -161,7 +161,7 @@ $nav1       = "Tambah";
                                                         <?php
                                                         $kueri      = mysqli_query($conn,"SELECT * FROM status_pegawai");
                                                         while ($tampil = mysqli_fetch_array($kueri)) { ?>
-                                                            <option value="<?= $tampil['id']; ?>"><?= $tampil['status_pegawai']; ?></option>
+                                                            <option value="<?= $tampil['status_id']; ?>"><?= $tampil['status_pegawai']; ?></option>
                                                         <?php } ?>
                                                         </select>
                                                     </div>
@@ -254,7 +254,7 @@ $nav1       = "Tambah";
                                                         <?php
                                                         $kueri      = mysqli_query($conn,"SELECT * FROM bentuk_wajah");
                                                         while ($tampil = mysqli_fetch_array($kueri)) { ?>
-                                                            <option value="<?= $tampil['id']; ?>"><?= $tampil['bentuk']; ?></option>
+                                                            <option value="<?= $tampil['bentuk_id']; ?>"><?= $tampil['bentuk']; ?></option>
                                                         <?php } ?>
                                                         </select>
                                                     </div>
@@ -269,7 +269,7 @@ $nav1       = "Tambah";
                                                         <?php
                                                         $kueri      = mysqli_query($conn,"SELECT * FROM jenis_rambut");
                                                         while ($tampil = mysqli_fetch_array($kueri)) { ?>
-                                                            <option value="<?= $tampil['id']; ?>"><?= $tampil['jenis']; ?></option>
+                                                            <option value="<?= $tampil['jenis_id']; ?>"><?= $tampil['jenis']; ?></option>
                                                         <?php } ?>
                                                         </select>
                                                     </div>
@@ -298,7 +298,7 @@ $nav1       = "Tambah";
                                                         <?php
                                                         $kueri      = mysqli_query($conn,"SELECT * FROM jabatan");
                                                         while ($tampil = mysqli_fetch_array($kueri)) { ?>
-                                                            <option value="<?= $tampil['id']; ?>"><?= $tampil['jabatan']; ?></option>
+                                                            <option value="<?= $tampil['jabatan_id']; ?>"><?= $tampil['jabatan']; ?></option>
                                                         <?php } ?>
                                                         </select>
                                                     </div>
