@@ -51,12 +51,12 @@ $slug       = "Pernikahan";
                                         <table class="table table-striped table-bordered table-hover" id="tabeldata">
                                             <thead>
                                                 <tr>
-                                                    <th style="text-align:center" width="3%">No</th>
-                                                    <th style="text-align:center" width="6%">Nama Pegawai</th>
-                                                    <th style="text-align:center" width="10%">Nama Pasangan</th>
-                                                    <th style="text-align:center" width="11%">Menikah Pada</th>
-                                                    <th style="text-align:center" width="6%">Jumlah Anak</th>
-                                                    <th style="text-align:center" width="15%">Opsi</th>
+                                                    <th class="text-center" width="2%">No</th>
+                                                    <th class="text-center" width="10%">Nama Pegawai</th>
+                                                    <th class="text-center" width="8%">Nama Pasangan</th>
+                                                    <th class="text-center" width="8%">Menikah Pada</th>
+                                                    <th class="text-center" width="6%">Jumlah Anak</th>
+                                                    <th class="text-center" width="10%">Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -80,7 +80,7 @@ $slug       = "Pernikahan";
                                             <?php } else {
                                             while ($tampil = mysqli_fetch_array($kueri)) { $no++ ?>
                                                 <tr>
-                                                    <td class="text-center" align="center"><?= $no; ?></td>
+                                                    <td class="text-center"><?= $no; ?></td>
                                                     <td class="text-center"><strong><?= $tampil['nama']; ?></strong></td>
                                                     <td class="text-center"><?= $tampil['suami_istri']; ?></td>
                                                     <td class="text-center"><?= $tampil['tanggal_menikah']." ".$tampil['bulan_menikah']." ".$tampil['tahun_menikah']; ?></td>
