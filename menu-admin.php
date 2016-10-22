@@ -61,6 +61,11 @@
                             <span class="title">Pegawai</span>
                         </a>
                     </li>
+                    <li class="nav-item <?php echo ($page == "Pernikahan" ? 'active open' : ''); ?>">
+                        <a href="pernikahan.php" class="nav-link ">
+                            <span class="title">Pernikahan</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

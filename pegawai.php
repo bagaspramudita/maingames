@@ -53,10 +53,10 @@ $slug       = "Pegawai";
                                                 <tr>
                                                     <th style="text-align:center" width="3%">No</th>
                                                     <th style="text-align:center" width="6%">NIP</th>
-                                                    <th style="text-align:center" width="15%">Nama</th>
+                                                    <th style="text-align:center" width="10%">Nama</th>
                                                     <th style="text-align:center" width="11%">Jabatan</th>
-                                                    <th style="text-align:center" width="11%">Tanggal Lahir</th>
-                                                    <th style="text-align:center" width="11%">Opsi</th>
+                                                    <th style="text-align:center" width="6%">Tanggal Lahir</th>
+                                                    <th style="text-align:center" width="15%">Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

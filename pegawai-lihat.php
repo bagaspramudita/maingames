@@ -132,6 +132,14 @@ $nav1       = "Lihat";
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Umur</label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="control-label"><?= date('Y')-$tampil['tahun_lahir']." tahun"; ?></label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
                                                         <label class="control-label col-md-12">Jenis Kelamin</label>
                                                     </div>
                                                     <div class="col-md-4">
@@ -217,53 +225,38 @@ $nav1       = "Lihat";
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Gol. Darah & Warna Kulit</label>
+                                                        <label class="control-label col-md-12">Golongan Darah</label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <span class="input-group-addon">
-                                                            <select name="golongan_darah" class="form-control" required>
-                                                            <option value="<?= $tampil['golongan_darah']; ?>"><?= $tampil['golongan_darah']; ?></option>
-                                                            <option value="">-- Golongan Darah --</option>
-                                                            <option value="AB">AB</option>
-                                                            <option value="A">A</option>
-                                                            <option value="B">B</option>
-                                                            <option value="O">O</option>
-                                                            </select>
-                                                        </span>
-                                                        <span class="input-group-addon">
-                                                            <select name="warna_kulit" class="form-control" required>
-                                                            <option value="<?= $tampil['warna_kulit']; ?>"><?= $tampil['warna_kulit']; ?></option>
-                                                            <option value="">-- Warna Kulit --</option>
-                                                            <option value="Putih Bersih">Putih Bersih</option>
-                                                            <option value="Putih Kecoklatan">Putih Kecoklatan</option>
-                                                            <option value="Coklat">Coklat</option>
-                                                            <option value="Coklat Sawo Matang">Coklat Sawo Matang</option>
-                                                            </select>
-                                                        </span>
+                                                        <label class="control-label"><?= $tampil['golongan_darah']; ?></label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Berat & Tinggi</label>
+                                                        <label class="control-label col-md-12">Warna Kulit</label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <span class="input-group-addon">
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" placeholder="Tinggi" name="tinggi_badan" value="<?= $tampil['tinggi_badan']; ?>">
-                                                                <span class="input-group-addon" id="sizing-addon1">cm</span>
-                                                            </div>
-                                                        </span>
-                                                        <span class="input-group-addon">
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" placeholder="Berat" name="berat_badan" value="<?= $tampil['berat_badan']; ?>">
-                                                                <span class="input-group-addon" id="sizing-addon1">kg</span>
-                                                            </div>
-                                                        </span>
+                                                        <label class="control-label"><?= $tampil['warna_kulit']; ?></label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Tinggi Badan</label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="control-label"><?= $tampil['tinggi_badan']." cm"; ?></label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Berat Badan</label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                       <label class="control-label"><?= $tampil['berat_badan']." Kg"; ?></label>
                                                     </div>
                                                     <div class="form-actions">
                                                         <div style="margin-top:15px;" class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><?= $nav1; ?></button>&nbsp;
-                                                            <a href="<?= $slug; ?>.php"><button type="button" class="btn default">Batal</button></a>
+                                                            <a href="<?= $slug; ?>.php"><button type="button" class="btn default">Kembali</button></a>
                                                         </div>
                                                     </div>
                                                 </div>
