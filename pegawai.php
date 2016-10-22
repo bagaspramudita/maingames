@@ -86,6 +86,7 @@ $slug       = "Pegawai";
                                                     <td class="text-center"><?= $tampil['jabatan']; ?></td>
                                                     <td class="text-center"><?= $tampil['tanggal_lahir']." ".$tampil['bulan_lahir']." ".$tampil['tahun_lahir']; ?></td>
                                                     <td align="center">
+                                                        <a href="<?= strtolower($slug); ?>-lihat.php?id=<?= $tampil['id']; ?>" class="btn btn-xs purple">Lihat<i class="fa fa-user"></i></a> 
                                                         <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
                                                         <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
                                                     </td>
