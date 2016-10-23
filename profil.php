@@ -4,9 +4,9 @@ session_start();
 if(empty($_SESSION['id']) && empty($_SESSION['nama']) && empty($_SESSION['is_admin'])) {
     header('location:login.php');
 }
-$nav        = "Data Pegawai";
-$page       = "Pegawai";
-$slug       = "pegawai";
+$nav        = "Data Saya";
+$page       = "Profil";
+$slug       = "profil";
 $nav1       = "Edit";
 ?>
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ $nav1       = "Edit";
                                     <div class="portlet-body">
                                     <?php
                                     // Begin Edit Library
-                                    $id         = abs($_GET['id']);
+                                    $id         = abs($_SESSION['id']);
                                     $kueri      = mysqli_query($conn,"
                                                   SELECT * FROM user
                                                   JOIN agama
@@ -96,14 +96,6 @@ $nav1       = "Edit";
                                                     </div>
                                                     <div class="col-md-4">
                                                         <input type="email" placeholder="Email" name="email" value="<?= $tampil['email']; ?>" required="required" class="form-control">        
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Password</label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input type="password" placeholder="Password" name="password" value="<?= $tampil['password']; ?>" required="required" class="form-control">        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

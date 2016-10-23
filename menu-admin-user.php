@@ -10,20 +10,20 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item <?php echo ($nav == "Data Master" ? 'active open' : ''); ?>">
+            <li class="nav-item <?php echo ($nav == "Data Saya" ? 'active open' : ''); ?>">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-user"></i>
                     <span class="title">Informasi Saya</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item <?php echo ($page == "Agama" ? 'active open' : ''); ?>">
-                        <a href="agama.php" class="nav-link ">
+                    <li class="nav-item <?php echo ($page == "Profil" ? 'active open' : ''); ?>">
+                        <a href="profil.php" class="nav-link ">
                             <span class="title">Profil Saya</span>
                         </a>
                     </li>
-                    <li class="nav-item <?php echo ($page == "Bentuk Wajah" ? 'active open' : ''); ?>">
-                        <a href="bentuk-wajah.php" class="nav-link ">
+                    <li class="nav-item <?php echo ($page == "Password" ? 'active open' : ''); ?>">
+                        <a href="ganti-password.php" class="nav-link ">
                             <span class="title">Ganti Password</span>
                         </a>
                     </li>
