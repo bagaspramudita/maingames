@@ -6,8 +6,8 @@ if(empty($_SESSION['id']) && empty($_SESSION['nama']) && empty($_SESSION['is_adm
 }
 $nav        = "Data Saya";
 $page       = "Password";
-$slug       = "ganti-password";
-$nav1       = "Ganti";
+$slug       = "password";
+$nav1       = "Edit";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,59 +52,46 @@ $nav1       = "Ganti";
                                     // Begin Edit Library
                                     $id         = abs($_SESSION['id']);
                                     $kueri      = mysqli_query($conn,"
-                                                  SELECT * FROM cuti
-                                                  JOIN user
-                                                  ON cuti.user_id = user.id
-                                                  WHERE cuti_id = '$id'
+                                                  SELECT * FROM user
+                                                  WHERE id = '$id'
                                                   ");
-                                    $tampil     = mysqli_fetch_array    ($kueri);
+                                    $tampil     = mysqli_fetch_array($kueri);
                                     // End Edit Library
                                     ?>
                                     <!-- Mulai Konten -->
                                         <form action="lib/<?= strtolower($slug); ?>-<?= strtolower($nav1); ?>-aksi.php" class="form-horizontal" method="POST">
                                             <!-- EDIT ID -->
-                                            <input type="hidden" name="id" value="<?= $tampil['cuti_id']; ?>">
+                                            <input type="hidden" name="id" value="<?= $tampil['id']; ?>">
                                             <!-- EDIT ID -->
-                                            <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Pilih Pegawai</label>
+                                                        <label class="control-label col-md-12">Password Lama</label>
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <label class="control-label"><input type="text" readonly name="pegawai" value="<?= $tampil['nama']; ?>" class="form-control"></label>
+                                                    <div class="col-md-2">
+                                                        <input type="password" required name="passlama" placeholder="Password Lama" class="form-control"></label>
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Password Baru</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input type="password" required name="passbaru" placeholder="Password Baru" class="form-control"></label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Jatah Cuti</label>
+                                                        <label class="control-label col-md-12">Password Lama</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" value="<?= $tampil['jumlah_cuti']; ?>" placeholder="Jatah Cuti" name="jumlah">
-                                                                <span class="input-group-addon" id="sizing-addon1">per tahun</span>
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Periode</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <select name="tahun" class="form-control" required>
-                                                            <option value="<?= $tampil['tahun']; ?>"><?= $tampil['tahun']; ?></option>
-                                                            <option value="">---</option>
-                                                            <?php
-                                                            $tahunini   = date('Y');
-                                                            for($i=$tahunini;$i<=2025;$i++) { ?>
-                                                            <option value="<?= $i; ?>"><?= $i; ?></option>
-                                                            <?php } ?>
-                                                        </select>
+                                                        <input type="password" required name="passbaru2" placeholder="Ketik Ulang" class="form-control"></label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="form-actions">
                                                         <div style="margin-top:15px;" class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><?= $nav1; ?></button>&nbsp;
-                                                            <a href="<?= $slug; ?>.php"><button type="button" class="btn default">Batal</button></a>
+                                                            <button type="submit" class="btn green">Ganti Password</button>&nbsp;
                                                         </div>
                                                     </div>
                                                 </div>
