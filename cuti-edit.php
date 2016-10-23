@@ -57,13 +57,13 @@ $nav1       = "Edit";
                                                   ON cuti.user_id = user.id
                                                   WHERE cuti_id = '$id'
                                                   ");
-                                    $tampil     = mysqli_fetch_array($kueri);
+                                    $tampil     = mysqli_fetch_array    ($kueri);
                                     // End Edit Library
                                     ?>
                                     <!-- Mulai Konten -->
                                         <form action="lib/<?= strtolower($slug); ?>-<?= strtolower($nav1); ?>-aksi.php" class="form-horizontal" method="POST">
                                             <!-- EDIT ID -->
-                                            <input type="hidden" name="id" value="<?= $tampil['user_id']; ?>">
+                                            <input type="hidden" name="id" value="<?= $tampil['cuti_id']; ?>">
                                             <!-- EDIT ID -->
                                             <div class="form-group">
                                                     <div class="col-md-3">
@@ -75,91 +75,26 @@ $nav1       = "Edit";
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Bertindak Sebagai</label>
+                                                        <label class="control-label col-md-12">Jatah Cuti</label>
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <label class="control-label">
-                                                            <label style="margin-bottom: -15px" class="mt-radio">
-                                                                <input required <?= ($tampil['sebagai'] == "Suami" ? "checked" : ""); ?> type="radio" name="sebagai" id="optionsRadios25" value="Suami"> Suami
-                                                                <span></span>
-                                                            </label>&nbsp;&nbsp;&nbsp;
-                                                            <label style="margin-bottom: -15px" class="mt-radio">
-                                                                <input required <?= ($tampil['sebagai'] == "Istri" ? "checked" : ""); ?> type="radio" name="sebagai" id="optionsRadios26" value="Istri"> Istri
-                                                                <span></span>
-                                                            </label>
-                                                        </label>
+                                                    <div class="col-md-2">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" value="<?= $tampil['jumlah_cuti']; ?>" placeholder="Jatah Cuti" name="jumlah">
+                                                                <span class="input-group-addon" id="sizing-addon1">per tahun</span>
+                                                            </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Nama Pasangan</label>
+                                                        <label class="control-label col-md-12">Periode</label>
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <input type="text" value="<?= $tampil['suami_istri']; ?>" placeholder="Nama Pasangan" name="pasangan" required="required" class="form-control">        
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Tanggal Lahir Pasangan</label>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <input value="<?= $tampil['tgl_lahir']; ?>" type="number" placeholder="Tanggal" class="form-control" name="tgl_lahir">
-                                                            </span>
-                                                            <span class="input-group-addon">
-                                                                <select name="bln_lahir" class="form-control" required>
-                                                                    <option value="<?= $tampil['bln_lahir']; ?>"><?= $tampil['bln_lahir']; ?></option>
-                                                                    <option value="">Bulan</option>
-                                                                    <?php
-                                                                    include 'lib/bulan.php';
-                                                                    for($i=0;$i<=11;$i++) { ?>
-                                                                    <option value="<?= $bulan[$i]; ?>"><?= $bulan[$i]; ?></option>
-                                                                    <?php } ?>
-                                                                </select>
-                                                            </span>
-                                                            <span class="input-group-addon">
-                                                                <input value="<?= $tampil['thn_lahir']; ?>" placeholder="Tahun" type="number" class="form-control" name="thn_lahir">
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Tanggal Pernikahan</label>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <input value="<?= $tampil['tanggal_menikah']; ?>" type="number" placeholder="Tanggal" class="form-control" name="tanggal_menikah">
-                                                            </span>
-                                                            <span class="input-group-addon">
-                                                                <select name="bulan_menikah" class="form-control" required>
-                                                                    <option value="<?= $tampil['bulan_menikah']; ?>"><?= $tampil['bulan_menikah']; ?></option>
-                                                                    <option value="">Bulan</option>
-                                                                    <?php
-                                                                    include 'lib/bulan.php';
-                                                                    for($i=0;$i<=11;$i++) { ?>
-                                                                    <option value="<?= $bulan[$i]; ?>"><?= $bulan[$i]; ?></option>
-                                                                    <?php } ?>
-                                                                </select>
-                                                            </span>
-                                                            <span class="input-group-addon">
-                                                                <input value="<?= $tampil['tahun_menikah']; ?>" placeholder="Tahun" type="number" class="form-control" name="tahun_menikah">
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Jumlah Anak</label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select name="jumlah_anak" class="form-control" required>
-                                                            <option value="<?= $tampil['jumlah_anak']; ?>"><?= ($tampil['jumlah_anak'] == 0 ? "Belum Punya" : $tampil['jumlah_anak']); ?></option>
-                                                            <option value="<?= ($tampil['jumlah_anak'] == 0 ? "" : ""); ?>"><?= ($tampil['jumlah_anak'] == 0 ? "-----" : "Belum Punya"); ?></option>
+                                                    <div class="col-md-2">
+                                                        <select name="tahun" class="form-control" required>
+                                                            <option value="<?= $tampil['tahun']; ?>"><?= $tampil['tahun']; ?></option>
+                                                            <option value="">---</option>
                                                             <?php
-                                                            for($i=1;$i<=9;$i++) { ?>
+                                                            $tahunini   = date('Y');
+                                                            for($i=$tahunini;$i<=2025;$i++) { ?>
                                                             <option value="<?= $i; ?>"><?= $i; ?></option>
                                                             <?php } ?>
                                                         </select>

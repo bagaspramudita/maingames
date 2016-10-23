@@ -61,8 +61,6 @@ $nav1       = "Tambah";
                                                             <?php
                                                             $kueri2      = mysqli_query($conn,"
                                                                                             SELECT * FROM user
-                                                                                            LEFT JOIN cuti
-                                                                                            ON user.id != cuti.user_id
                                                                                         ");
                                                             while ($tampil2 = mysqli_fetch_array($kueri2)) { ?>
                                                                 <option value="<?= $tampil2['id']; ?>"><?= $tampil2['nama']; ?></option>

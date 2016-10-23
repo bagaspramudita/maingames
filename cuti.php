@@ -51,11 +51,11 @@ $slug       = "Cuti";
                                         <table class="table table-striped table-bordered table-hover" id="tabeldata">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center" width="2%">No</th>
+                                                    <th class="text-center" width="1%">No</th>
                                                     <th class="text-center" width="10%">Nama Pegawai</th>
                                                     <th class="text-center" width="8%">Sisa Cuti</th>
                                                     <th class="text-center" width="8%">Periode</th>
-                                                    <th class="text-center" width="10%">Opsi</th>
+                                                    <th class="text-center" width="5%">Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -65,7 +65,7 @@ $slug       = "Cuti";
                                                           SELECT * FROM user
                                                           JOIN cuti
                                                           ON user.id = cuti.user_id
-                                                          ORDER BY cuti.user_id
+                                                          ORDER BY cuti.cuti_id
                                                           DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
