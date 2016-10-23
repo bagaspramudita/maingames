@@ -67,7 +67,7 @@ if(empty($foto)) {
 						  '$warna_kulit',
 						  '$noktp',
 						  '$npwp',
-						  '1'
+						  '0'
 						  )
 						  ");
 	if($kueri) {

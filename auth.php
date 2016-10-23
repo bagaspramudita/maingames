@@ -16,11 +16,19 @@ $data			= mysqli_fetch_array($kueri);
 $isadmin		= $data['is_admin'];
 // Validasi
 	if($ceklogin == 1) {
-		session_start();
-		$_SESSION['id']			= $data['id'];
-		$_SESSION['nama']		= $data['nama'];
-		$_SESSION['is_admin']	= $data['is_admin'];
-		header('location:index.php');
+		if($isadmin == 1) {
+			session_start();
+			$_SESSION['id']			= $data['id'];
+			$_SESSION['nama']		= $data['nama'];
+			$_SESSION['is_admin']	= $data['is_admin'];
+			header('location:index.php');
+		} elseif($isadmin == 0) {
+			session_start();
+			$_SESSION['id']			= $data['id'];
+			$_SESSION['nama']		= $data['nama'];
+			$_SESSION['is_admin']	= $data['is_admin'];
+			header('location:index.php');
+		}	
 	} else {
 		header('location:login.php?act=fail');
 	}

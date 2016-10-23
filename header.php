@@ -5,7 +5,7 @@ $tampil     = mysqli_fetch_array($kueri);
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <div class="page-logo">
-            <a href="index.html">
+            <a href="index.php">
                 <img src="assets/<?= $tampil['logo']; ?>" width="158" height="30" alt="logo" class="logo-default" /> </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
@@ -17,9 +17,14 @@ $tampil     = mysqli_fetch_array($kueri);
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <li class="dropdown dropdown-user">
+                    <?php
+                    $iduser         = $_SESSION['id'];
+                    $kueru          = mysqli_query($conn,"SELECT * FROM user WHERE id = '$iduser'");
+                    $tampilu        = mysqli_fetch_array($kueru);
+                    ?>
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle" src="assets/layouts/layout/img/avatar3_small.jpg" />
-                        <span class="username username-hide-on-mobile"> Nick </span>
+                        <img style="width: 29px" class="img-circle" src="assets/foto_pegawai/<?= $tampilu['foto']; ?>" />
+                        <span class="username username-hide-on-mobile">&nbsp;&nbsp;<?= $tampilu['nama']; ?> </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
