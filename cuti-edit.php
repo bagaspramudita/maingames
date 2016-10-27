@@ -75,11 +75,55 @@ $nav1       = "Edit";
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-12">Jatah Cuti</label>
+                                                        <label class="control-label col-md-12">Cuti Tahunan</label>
                                                     </div>
                                                     <div class="col-md-2">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control" value="<?= $tampil['jumlah_cuti']; ?>" placeholder="Jatah Cuti" name="jumlah">
+                                                                <input type="text" class="form-control" value="<?= $tampil['cuti_tahunan']; ?>" placeholder="Jumlah" name="cuti_tahunan">
+                                                                <span class="input-group-addon" id="sizing-addon1">per tahun</span>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Cuti Menikah</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" value="<?= $tampil['cuti_menikah']; ?>" placeholder="Jumlah" name="cuti_menikah">
+                                                                <span class="input-group-addon" id="sizing-addon1">per tahun</span>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Cuti Sakit</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" value="<?= $tampil['cuti_sakit']; ?>" placeholder="Jumlah" name="cuti_sakit">
+                                                                <span class="input-group-addon" id="sizing-addon1">per tahun</span>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Cuti Keluarga Meninggal</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" value="<?= $tampil['cuti_keluarga_meninggal']; ?>" placeholder="Jumlah" name="cuti_keluarga_meninggal">
+                                                                <span class="input-group-addon" id="sizing-addon1">per tahun</span>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-md-12">Cuti Melahirkan</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" value="<?= $tampil['cuti_melahirkan']; ?>" placeholder="Jumlah" name="cuti_melahirkan">
                                                                 <span class="input-group-addon" id="sizing-addon1">per tahun</span>
                                                             </div>
                                                     </div>

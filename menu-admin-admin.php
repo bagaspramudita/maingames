@@ -1,3 +1,9 @@
+<?php
+$query              = mysqli_query($conn,"SELECT * FROM log_cuti
+                                          WHERE status = 0
+                                         ");
+$hitung             = mysqli_num_rows($query);
+?>
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">
         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
@@ -69,6 +75,20 @@
                     <li class="nav-item <?php echo ($page == "Cuti" ? 'active open' : ''); ?>">
                         <a href="cuti.php" class="nav-link ">
                             <span class="title">Data Cuti</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item <?php echo ($nav == "Transaksi" ? 'active open' : ''); ?>">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-exchange"></i>
+                    <span class="title">Transaksi <?= ($hitung >= 1 ? "<span style='float: right;margin-right: 25px' class='badge badge-danger'>".$hitung." </span>" : ""); ?></span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item <?php echo ($page == "Permintaan Cuti" ? 'active open' : ''); ?>">
+                        <a href="permintaan-cuti.php" class="nav-link ">
+                            <span class="title">Permintaan Cuti</span>
                         </a>
                     </li>
                 </ul>

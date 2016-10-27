@@ -4,9 +4,9 @@ session_start();
 if(empty($_SESSION['id']) && empty($_SESSION['nama']) && empty($_SESSION['is_admin'])) {
 	header('location:login.php');
 }
-$nav		= "Data Pegawai";
-$page 		= "Cuti";
-$slug       = "cuti";
+$nav		= "Transaksi";
+$page 		= "Pengajuan Cuti";
+$slug       = "pengajuan-cuti";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,26 +52,32 @@ $slug       = "cuti";
                                             <thead>
                                                 <tr>
                                                     <th class="text-center" width="1%">No</th>
-                                                    <th class="text-center" width="10%">Nama Pegawai</th>
-                                                    <th class="text-center" width="5%">Sisa Cuti</th>
-                                                    <th class="text-center" width="8%">Periode</th>
-                                                    <th class="text-center" width="5%">Opsi</th>
+                                                    <th class="text-center" width="8%">Nama Pegawai</th>
+                                                    <th class="text-center" width="7%">Mulai Cuti</th>
+                                                    <th class="text-center" width="3%">Durasi Cuti</th>
+                                                    <th class="text-center" width="7%">Berakhir Cuti</th>
+                                                    <th class="text-center" width="4%">Status</th>
+                                                    <th class="text-center" width="6%">Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <?php
+                                            $idus       = $_SESSION['id'];
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM user
                                                           JOIN cuti
                                                           ON user.id = cuti.user_id
-                                                          ORDER BY cuti.cuti_id
+                                                          JOIN log_cuti
+                                                          ON user.id = log_cuti.user_id
+                                                          WHERE user.id = '$idus'
+                                                          ORDER BY log_cuti.log_id
                                                           DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
                                             if($cekdata == 0) { ?>
                                                 <tr>
-                                                    <td align="center" colspan="5">Belum Ada Data. &nbsp;
+                                                    <td align="center" colspan="7">Belum Ada Data. &nbsp;
                                                         <a href="<?= strtolower($slug); ?>-tambah.php" class="btn blue">
                                                         <i class="fa fa-plus"></i> Tambahkan</a>
                                                         </td>
@@ -81,17 +87,25 @@ $slug       = "cuti";
                                                 <tr>
                                                     <td class="text-center"><?= $no; ?></td>
                                                     <td class="text-center"><strong><?= $tampil['nama']; ?></strong></td>
-                                                    <td>
-                                                        Cuti Tahunan: <?= $tampil['cuti_tahunan']; ?> hari<br/>
-                                                        Cuti Menikah: <?= $tampil['cuti_menikah']; ?> hari<br/>
-                                                        Cuti Sakit: <?= $tampil['cuti_sakit']; ?> hari<br/>
-                                                        Cuti Keluarga Meninggal: <?= $tampil['cuti_keluarga_meninggal']; ?> hari<br/>
-                                                        Cuti Tahunan: <?= $tampil['cuti_melahirkan']; ?> hari
+                                                    <td class="text-center"><?= $tampil['tanggal_mulai']." ".$tampil['bulan_mulai']." ".$tampil['tahun_mulai']; ?></td>
+                                                    <td class="text-center"><?= $tampil['durasi']." hari"; ?></td>
+                                                    <td class="text-center"><?= $tampil['tanggal_berakhir']." ".$tampil['bulan_berakhir']." ".$tampil['tahun_berakhir']; ?></td>
+                                                    <td class="text-center">
+                                                        <?php
+                                                            if($tampil['status']==0) {
+                                                                echo "<button class='btn btn-xs warning popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Sedang menunggu persetujuan dari atasan.' data-original-title='Status Cuti'>Pending</button>";
+                                                                $status = "";
+                                                            } elseif($tampil['status']==1) {
+                                                                echo "<button class='btn btn-xs blue popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Cuti Anda telah diterima.' data-original-title='Status Cuti'>Diterima</button>";
+                                                                $status = "disabled";
+                                                            } elseif($tampil['status']==2) {
+                                                                echo "<button class='btn btn-xs red popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Cuti Anda Ditolak!' data-original-title='Status Cuti'>Ditolak</button>";
+                                                                $status = "disabled";
+                                                            }
+                                                        ?>
                                                     </td>
-                                                    <td class="text-center">Tahun <?= $tampil['tahun']; ?></td>
                                                     <td align="center">
-                                                        <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['cuti_id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
-                                                        <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['cuti_id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
+                                                        <a onclick="javascript:return confirm('Yakin ingin batalkan cuti ini?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs red <?= $status; ?>">Batalkan<i class="fa fa-close"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } }?>
