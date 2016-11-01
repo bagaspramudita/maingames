@@ -28,6 +28,11 @@ $hitung             = mysqli_num_rows($query);
                             <span class="title">Profil Saya</span>
                         </a>
                     </li>
+                    <li class="nav-item <?php echo ($page == "Rekening" ? 'active open' : ''); ?>">
+                        <a href="rekening.php" class="nav-link ">
+                            <span class="title">Rekening Saya</span>
+                        </a>
+                    </li>
                     <li class="nav-item <?php echo ($page == "Password" ? 'active open' : ''); ?>">
                         <a href="ganti-password.php" class="nav-link ">
                             <span class="title">Ganti Password</span>

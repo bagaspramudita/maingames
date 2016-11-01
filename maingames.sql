@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2016 at 02:15 PM
+-- Generation Time: Nov 01, 2016 at 02:54 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -178,6 +178,27 @@ INSERT INTO `perusahaan` (`id`, `nama_perusahaan`, `alamat`, `notelp`, `kodepos`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rekening`
+--
+
+CREATE TABLE `rekening` (
+  `rekening_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `nama_bank` varchar(50) NOT NULL,
+  `no_rekening` bigint(20) NOT NULL,
+  `atas_nama` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rekening`
+--
+
+INSERT INTO `rekening` (`rekening_id`, `user_id`, `nama_bank`, `no_rekening`, `atas_nama`) VALUES
+(8, 20, 'Bank DKI', 3452646101, 'Bagas Pramudita');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `status_pegawai`
 --
 
@@ -317,6 +338,12 @@ ALTER TABLE `perusahaan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rekening`
+--
+ALTER TABLE `rekening`
+  ADD PRIMARY KEY (`rekening_id`);
+
+--
 -- Indexes for table `status_pegawai`
 --
 ALTER TABLE `status_pegawai`
@@ -373,6 +400,11 @@ ALTER TABLE `log_cuti`
 --
 ALTER TABLE `perusahaan`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `rekening`
+--
+ALTER TABLE `rekening`
+  MODIFY `rekening_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `status_pegawai`
 --
