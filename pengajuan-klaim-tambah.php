@@ -90,10 +90,10 @@ $nav1       = "Tambah";
                                                         <label class="control-label col-md-12">Jumlah</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon" id="sizing-addon1">Rp</span>
-                                                                <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" type="text" class="form-control" placeholder="Jumlah" name="jumlah">
-                                                            </div>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" id="sizing-addon1">Rp</span>
+                                                            <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" type="text" class="form-control" placeholder="Jumlah" name="jumlah">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

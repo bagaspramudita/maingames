@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2016 at 12:32 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.5.37
+-- Generation Time: Nov 02, 2016 at 04:25 PM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -177,6 +177,27 @@ INSERT INTO `log_cuti` (`log_id`, `cuti_id`, `user_id`, `jenis_cuti`, `alasan`, 
 (2, 10, 20, 'Cuti Tahunan', 'Ada ursan keluarga...', 13, 'Januari', 2016, 12, 14, 'Februari', 2017, 1, ''),
 (3, 10, 20, 'Cuti Tahunan', 'Istri Melahirkan', 31, 'Februari', 2016, 1, 6, 'September', 2016, 1, ''),
 (5, 10, 20, 'Cuti Tahunan', 'Sakit\r\n', 2, 'November', 2016, 2, 4, 'November', 2016, 1, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lowongan`
+--
+
+CREATE TABLE `lowongan` (
+  `lowongan_id` int(5) NOT NULL,
+  `nama_lowongan` varchar(50) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `qty` int(3) NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lowongan`
+--
+
+INSERT INTO `lowongan` (`lowongan_id`, `nama_lowongan`, `deskripsi`, `qty`, `status`) VALUES
+(3, 'Web Programmer', 'Merancang Program Website', 13, 1);
 
 -- --------------------------------------------------------
 
@@ -363,6 +384,12 @@ ALTER TABLE `log_cuti`
   ADD PRIMARY KEY (`log_id`);
 
 --
+-- Indexes for table `lowongan`
+--
+ALTER TABLE `lowongan`
+  ADD PRIMARY KEY (`lowongan_id`);
+
+--
 -- Indexes for table `perusahaan`
 --
 ALTER TABLE `perusahaan`
@@ -431,6 +458,11 @@ ALTER TABLE `klaim`
 --
 ALTER TABLE `log_cuti`
   MODIFY `log_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `lowongan`
+--
+ALTER TABLE `lowongan`
+  MODIFY `lowongan_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `perusahaan`
 --
