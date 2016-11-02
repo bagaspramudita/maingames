@@ -5,8 +5,8 @@ if(empty($_SESSION['id']) && empty($_SESSION['nama']) && empty($_SESSION['is_adm
 	header('location:login.php');
 }
 $nav		= "Transaksi";
-$page 		= "Permintaan Cuti";
-$slug       = "permintaan-cuti";
+$page 		= "Pengajuan Klaim";
+$slug       = "pengajuan-klaim";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,7 @@ $slug       = "permintaan-cuti";
                                     <div class="portlet-title">
                                         <div class="caption">
                                             <span class="caption-subject font-green-sharp bold uppercase"><?= $page; ?></span>
-                                            <span style="right: 36px;position: absolute;top: 15px;display: none"><a href="<?= strtolower($slug); ?>-tambah.php">
+                                            <span style="right: 36px;position: absolute;top: 15px;"><a href="<?= strtolower($slug); ?>-tambah.php">
                                                 <button type="button" class="btn btn-default"><i class="fa fa-plus"></i>Tambah Baru</button>
                                             </a></span>
                                         </div>
@@ -52,44 +52,55 @@ $slug       = "permintaan-cuti";
                                             <thead>
                                                 <tr>
                                                     <th class="text-center" width="1%">No</th>
-                                                    <th class="text-center" width="8%">Nama Pegawai</th>
-                                                    <th class="text-center" width="7%">Mulai Cuti</th>
-                                                    <th class="text-center" width="3%">Durasi Cuti</th>
-                                                    <th class="text-center" width="7%">Berakhir Cuti</th>
-                                                    <th class="text-center" width="4%">Alasan</th>
+                                                    <th class="text-center" width="6%">Nama</th>
+                                                    <th class="text-center" width="7%">Subjek</th>
+                                                    <th class="text-center" width="3%">Jumlah</th>
+                                                    <th class="text-center" width="7%">Metode Bayar</th>
+                                                    <th class="text-center" width="4%">Status</th>
                                                     <th class="text-center" width="6%">Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <?php
+                                            $idus       = $_SESSION['id'];
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM user
-                                                          JOIN cuti
-                                                          ON user.id = cuti.user_id
-                                                          JOIN log_cuti
-                                                          ON user.id = log_cuti.user_id
-                                                          WHERE log_cuti.status = 0
+                                                          JOIN klaim
+                                                          ON user.id = klaim.user_id
+                                                          WHERE klaim.user_id = '".$_SESSION['id']."'
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
                                             if($cekdata == 0) { ?>
                                                 <tr>
-                                                    <td align="center" colspan="7">Belum ada data.</td>
+                                                    <td align="center" colspan="7">Belum Ada Data. &nbsp;
+                                                        <a href="<?= strtolower($slug); ?>-tambah.php" class="btn blue">
+                                                        <i class="fa fa-plus"></i> Tambahkan</a>
+                                                    </td>
                                                 </tr>
                                             <?php } else {
                                             while ($tampil = mysqli_fetch_array($kueri)) { $no++ ?>
                                                 <tr>
                                                     <td class="text-center"><?= $no; ?></td>
                                                     <td class="text-center"><strong><?= $tampil['nama']; ?></strong></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_mulai']." ".$tampil['bulan_mulai']." ".$tampil['tahun_mulai']; ?></td>
-                                                    <td class="text-center"><?= $tampil['durasi']." hari"; ?></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_berakhir']." ".$tampil['bulan_berakhir']." ".$tampil['tahun_berakhir']; ?></td>
+                                                    <td class="text-center"><?= $tampil['subjek']; ?></td>
+                                                    <td class="text-center"><?= "Rp ".number_format($tampil['jumlah']).",-"; ?></td>
+                                                    <td class="text-center"><?= $tampil['metode_pembayaran']; ?></td>
                                                     <td class="text-center">
-                                                    <button class='btn btn-xs yellow popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='<?= $tampil['alasan']; ?>' data-original-title='Alasan Cuti'>Lihat</button>
+                                                        <?php
+                                                            if($tampil['status']==1) {
+                                                                echo "<button class='btn btn-xs warning popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Sedang menunggu persetujuan dari atasan.' data-original-title='Status Cuti'>Pending</button>";
+                                                                $status = "";
+                                                            } elseif($tampil['status']==2) {
+                                                                echo "<button class='btn btn-xs blue popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Cuti Anda telah diterima.' data-original-title='Status Cuti'>Diterima</button>";
+                                                                $status = "disabled";
+                                                            } elseif($tampil['status']==3) {
+                                                                echo "<button class='btn btn-xs red popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Cuti Anda Ditolak!' data-original-title='Status Cuti'>Ditolak</button>";
+                                                            }
+                                                        ?>
                                                     </td>
                                                     <td align="center">
-                                                        <a onclick="javascript:return confirm('Terima Cuti ini?');" href="lib/<?= strtolower($slug); ?>-terima.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs blue <?= $status; ?>">Terima<i class="fa fa-check"></i></a>
-                                                        <a onclick="javascript:return confirm('Tolak Cuti ini?');" href="lib/<?= strtolower($slug); ?>-tolak.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs red <?= $status; ?>">Tolak<i class="fa fa-close"></i></a>
+                                                        <a onclick="javascript:return confirm('Yakin ingin batalkan klaim ini?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['klaim_id']; ?>" class="btn btn-xs red <?= $status; ?>">Batalkan<i class="fa fa-close"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } }?>

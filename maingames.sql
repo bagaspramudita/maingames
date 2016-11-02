@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2016 at 02:54 PM
+-- Generation Time: Nov 02, 2016 at 12:32 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -125,6 +125,30 @@ INSERT INTO `jenis_rambut` (`jenis_id`, `jenis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `klaim`
+--
+
+CREATE TABLE `klaim` (
+  `klaim_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `subjek` varchar(100) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `jumlah` bigint(50) NOT NULL,
+  `metode_pembayaran` varchar(50) NOT NULL,
+  `bukti_pembelian` varchar(100) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `klaim`
+--
+
+INSERT INTO `klaim` (`klaim_id`, `user_id`, `subjek`, `deskripsi`, `jumlah`, `metode_pembayaran`, `bukti_pembelian`, `status`) VALUES
+(4, 20, 'Beli Tas Gunung', 'Untuk naik gunung', 180000, 'Transfer', 'day-3.png', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `log_cuti`
 --
 
@@ -151,7 +175,8 @@ CREATE TABLE `log_cuti` (
 
 INSERT INTO `log_cuti` (`log_id`, `cuti_id`, `user_id`, `jenis_cuti`, `alasan`, `tanggal_mulai`, `bulan_mulai`, `tahun_mulai`, `durasi`, `tanggal_berakhir`, `bulan_berakhir`, `tahun_berakhir`, `status`, `keterangan`) VALUES
 (2, 10, 20, 'Cuti Tahunan', 'Ada ursan keluarga...', 13, 'Januari', 2016, 12, 14, 'Februari', 2017, 1, ''),
-(3, 10, 20, 'Cuti Tahunan', 'Istri Melahirkan', 31, 'Februari', 2016, 1, 6, 'September', 2016, 1, '');
+(3, 10, 20, 'Cuti Tahunan', 'Istri Melahirkan', 31, 'Februari', 2016, 1, 6, 'September', 2016, 1, ''),
+(5, 10, 20, 'Cuti Tahunan', 'Sakit\r\n', 2, 'November', 2016, 2, 4, 'November', 2016, 1, '');
 
 -- --------------------------------------------------------
 
@@ -194,7 +219,7 @@ CREATE TABLE `rekening` (
 --
 
 INSERT INTO `rekening` (`rekening_id`, `user_id`, `nama_bank`, `no_rekening`, `atas_nama`) VALUES
-(8, 20, 'Bank DKI', 3452646101, 'Bagas Pramudita');
+(9, 20, 'BCA', 3452646100, 'Bagas Pramudita');
 
 -- --------------------------------------------------------
 
@@ -326,6 +351,12 @@ ALTER TABLE `jenis_rambut`
   ADD PRIMARY KEY (`jenis_id`);
 
 --
+-- Indexes for table `klaim`
+--
+ALTER TABLE `klaim`
+  ADD PRIMARY KEY (`klaim_id`);
+
+--
 -- Indexes for table `log_cuti`
 --
 ALTER TABLE `log_cuti`
@@ -391,10 +422,15 @@ ALTER TABLE `jabatan`
 ALTER TABLE `jenis_rambut`
   MODIFY `jenis_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `klaim`
+--
+ALTER TABLE `klaim`
+  MODIFY `klaim_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `log_cuti`
 --
 ALTER TABLE `log_cuti`
-  MODIFY `log_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `log_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `perusahaan`
 --
@@ -404,7 +440,7 @@ ALTER TABLE `perusahaan`
 -- AUTO_INCREMENT for table `rekening`
 --
 ALTER TABLE `rekening`
-  MODIFY `rekening_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `rekening_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `status_pegawai`
 --

@@ -5,8 +5,8 @@ if(empty($_SESSION['id']) && empty($_SESSION['nama']) && empty($_SESSION['is_adm
 	header('location:login.php');
 }
 $nav		= "Transaksi";
-$page 		= "Permintaan Cuti";
-$slug       = "permintaan-cuti";
+$page 		= "Permintaan Klaim";
+$slug       = "permintaan-klaim";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,11 +52,11 @@ $slug       = "permintaan-cuti";
                                             <thead>
                                                 <tr>
                                                     <th class="text-center" width="1%">No</th>
-                                                    <th class="text-center" width="8%">Nama Pegawai</th>
-                                                    <th class="text-center" width="7%">Mulai Cuti</th>
-                                                    <th class="text-center" width="3%">Durasi Cuti</th>
-                                                    <th class="text-center" width="7%">Berakhir Cuti</th>
-                                                    <th class="text-center" width="4%">Alasan</th>
+                                                    <th class="text-center" width="6%">Nama</th>
+                                                    <th class="text-center" width="7%">Subjek</th>
+                                                    <th class="text-center" width="3%">Jumlah</th>
+                                                    <th class="text-center" width="7%">Metode Bayar</th>
+                                                    <th class="text-center" width="4%">Bukti</th>
                                                     <th class="text-center" width="6%">Opsi</th>
                                                 </tr>
                                             </thead>
@@ -65,11 +65,9 @@ $slug       = "permintaan-cuti";
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM user
-                                                          JOIN cuti
-                                                          ON user.id = cuti.user_id
-                                                          JOIN log_cuti
-                                                          ON user.id = log_cuti.user_id
-                                                          WHERE log_cuti.status = 0
+                                                          JOIN klaim
+                                                          ON user.id = klaim.user_id
+                                                          WHERE klaim.status = 1
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
                                             if($cekdata == 0) { ?>
@@ -81,15 +79,13 @@ $slug       = "permintaan-cuti";
                                                 <tr>
                                                     <td class="text-center"><?= $no; ?></td>
                                                     <td class="text-center"><strong><?= $tampil['nama']; ?></strong></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_mulai']." ".$tampil['bulan_mulai']." ".$tampil['tahun_mulai']; ?></td>
-                                                    <td class="text-center"><?= $tampil['durasi']." hari"; ?></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_berakhir']." ".$tampil['bulan_berakhir']." ".$tampil['tahun_berakhir']; ?></td>
-                                                    <td class="text-center">
-                                                    <button class='btn btn-xs yellow popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='<?= $tampil['alasan']; ?>' data-original-title='Alasan Cuti'>Lihat</button>
-                                                    </td>
+                                                    <td class="text-center"><?= $tampil['subjek']; ?></td>
+                                                    <td class="text-center"><?= "Rp ".number_format($tampil['jumlah']).",-"; ?></td>
+                                                    <td class="text-center"><?= $tampil['metode_pembayaran']; ?></td>
+                                                    <td class="text-center"><a target="_blank" href="assets/klaim/<?= $tampil['bukti_pembelian']; ?>">Unduh</a></td>
                                                     <td align="center">
-                                                        <a onclick="javascript:return confirm('Terima Cuti ini?');" href="lib/<?= strtolower($slug); ?>-terima.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs blue <?= $status; ?>">Terima<i class="fa fa-check"></i></a>
-                                                        <a onclick="javascript:return confirm('Tolak Cuti ini?');" href="lib/<?= strtolower($slug); ?>-tolak.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs red <?= $status; ?>">Tolak<i class="fa fa-close"></i></a>
+                                                        <a onclick="javascript:return confirm('Terima Klaim ini?');" href="lib/<?= strtolower($slug); ?>-terima.php?id=<?=$tampil['klaim_id']; ?>" class="btn btn-xs blue <?= $status; ?>">Terima<i class="fa fa-check"></i></a>
+                                                        <a onclick="javascript:return confirm('Tolak Klaim ini?');" href="lib/<?= strtolower($slug); ?>-tolak.php?id=<?=$tampil['klaim_id']; ?>" class="btn btn-xs red <?= $status; ?>">Tolak<i class="fa fa-close"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } }?>

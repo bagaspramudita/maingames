@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+include 'lib/bulan.php';
 session_start();
 if(empty($_SESSION['id']) && empty($_SESSION['nama']) && empty($_SESSION['is_admin'])) {
     header('location:login.php');
@@ -113,20 +114,20 @@ $nav1       = "Tambah";
                                                     <div class="col-md-6">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">
-                                                                <input type="number" placeholder="Tanggal" class="form-control" name="tanggal_mulai">
+                                                                <input value="<?= date('d'); ?>" type="number" placeholder="Tanggal" class="form-control" name="tanggal_mulai">
                                                             </span>
                                                             <span class="input-group-addon">
                                                                 <select name="bulan_mulai" class="form-control" required>
-                                                                    <option value="">Bulan</option>
+                                                                    <option value="<?= $bulan[date('m')-1]; ?>"><?= $bulan[date('m')-1]; ?></option>
+                                                                    <option value="">--- Bulan --- </option>
                                                                     <?php
-                                                                    include 'lib/bulan.php';
                                                                     for($i=0;$i<=11;$i++) { ?>
                                                                     <option value="<?= $bulan[$i]; ?>"><?= $bulan[$i]; ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             </span>
                                                             <span class="input-group-addon">
-                                                                <input placeholder="Tahun" type="number" class="form-control" name="tahun_mulai">
+                                                                <input value="<?= date('Y'); ?>" placeholder="Tahun" type="number" class="form-control" name="tahun_mulai">
                                                             </span>
                                                         </div>
                                                     </div>
@@ -137,7 +138,7 @@ $nav1       = "Tambah";
                                                     </div>
                                                     <div class="col-md-2">
                                                             <div class="input-group">
-                                                                <input maxlength="2" type="text" class="form-control" placeholder="Durasi" name="durasi">
+                                                                <input value="2" maxlength="2" type="text" class="form-control" placeholder="Durasi" name="durasi">
                                                                 <span class="input-group-addon" id="sizing-addon1">hari</span>
                                                             </div>
                                                     </div>
@@ -149,11 +150,12 @@ $nav1       = "Tambah";
                                                     <div class="col-md-6">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">
-                                                                <input type="number" placeholder="Tanggal" class="form-control" name="tanggal_berakhir">
+                                                                <input value="<?= date('d')+2; ?>" type="number" placeholder="Tanggal" class="form-control" name="tanggal_berakhir">
                                                             </span>
                                                             <span class="input-group-addon">
                                                                 <select name="bulan_berakhir" class="form-control" required>
-                                                                    <option value="">Bulan</option>
+                                                                    <option value="<?= $bulan[date('m')-1]; ?>"><?= $bulan[date('m')-1]; ?></option>
+                                                                    <option value="">--- Bulan --- </option>
                                                                     <?php
                                                                     include 'lib/bulan.php';
                                                                     for($i=0;$i<=11;$i++) { ?>
@@ -162,7 +164,7 @@ $nav1       = "Tambah";
                                                                 </select>
                                                             </span>
                                                             <span class="input-group-addon">
-                                                                <input placeholder="Tahun" type="number" class="form-control" name="tahun_berakhir">
+                                                                <input value="<?= date('Y'); ?>" placeholder="Tahun" type="number" class="form-control" name="tahun_berakhir">
                                                             </span>
                                                         </div>
                                                     </div>
