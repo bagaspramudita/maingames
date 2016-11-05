@@ -63,7 +63,7 @@ $nav1       = "Edit";
                                             <div class="form-body">
                                                 <div class="form-group">
                                                     <div class="col-md-3">
-                                                        <label class="control-label col-md-4">Bentuk Wajah</label>
+                                                        <label class="control-label">Bentuk Wajah</label>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <!-- EDIT ID -->

@@ -5,8 +5,8 @@ $agama 	 	= $_POST['agama'];
 
 $kueri 		= mysqli_query($conn,"
 			  UPDATE agama
-			  SET agama 	= '$agama'
-			  WHERE id 		= '$id'
+			  SET agama 			= '$agama'
+			  WHERE agama_id 		= '$id'
 			  ");
 
 if($kueri) {

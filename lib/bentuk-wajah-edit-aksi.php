@@ -5,8 +5,8 @@ $bentuk_wajah 	 	= $_POST['bentuk_wajah'];
 
 $kueri 				= mysqli_query($conn,"
 					  UPDATE bentuk_wajah
-					  SET bentuk 	= '$bentuk_wajah'
-					  WHERE id 		= '$id'
+					  SET bentuk 			= '$bentuk_wajah'
+					  WHERE bentuk_id 		= '$id'
 					  ");
 
 if($kueri) {

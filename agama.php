@@ -72,8 +72,8 @@ $page 		= "Agama";
                                                     <td align="center"><?= $no; ?></td>
                                                     <td><?= $tampil['agama']; ?></td>
                                                     <td align="center">
-                                                        <a href="<?= strtolower($page); ?>-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
-                                                        <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($page); ?>-hapus.php?id=<?=$tampil['id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
+                                                        <a href="<?= strtolower($page); ?>-edit.php?id=<?= $tampil['agama_id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a> 
+                                                        <a onclick="javascript:return confirm('Yakin ingin hapus?');" href="lib/<?= strtolower($page); ?>-hapus.php?id=<?=$tampil['agama_id']; ?>" class="btn btn-xs red">Hapus<i class="fa fa-trash-o"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } }?>

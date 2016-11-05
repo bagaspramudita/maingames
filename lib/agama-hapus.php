@@ -4,7 +4,7 @@ $agama		= abs($_GET['id']);
 
 $kueri 		= mysqli_query($conn,"
 			  DELETE FROM agama
-			  WHERE id = '$agama'
+			  WHERE agama_id = '$agama'
 			  ");
 
 if($kueri) {

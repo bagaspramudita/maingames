@@ -7,15 +7,6 @@ if(empty($_SESSION['id']) && empty($_SESSION['nama']) && empty($_SESSION['is_adm
 $nav        = "Data Master";
 $page       = "Agama";
 $nav1       = "Edit";
-
-// Begin Edit Library
-$id         = abs($_GET['id']);
-$kueri      = mysqli_query($conn,"
-              SELECT * FROM agama
-              WHERE id = '$id'
-              ");
-$tampil     = mysqli_fetch_array($kueri);
-// End Edit Library
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +47,16 @@ $tampil     = mysqli_fetch_array($kueri);
                                         </div>
                                     </div>
                                     <div class="portlet-body">
+                                    <?php 
+                                    // Begin Edit Library
+                                    $id         = abs($_GET['id']);
+                                    $kueri      = mysqli_query($conn,"
+                                                  SELECT * FROM agama
+                                                  WHERE agama_id = '$id'
+                                                  ");
+                                    $tampil     = mysqli_fetch_array($kueri);
+                                    // End Edit Library
+                                    ?>
                                     <!-- Mulai Konten -->
                                         <form action="lib/<?= strtolower($page); ?>-<?= strtolower($nav1); ?>-aksi.php" class="form-horizontal" method="POST">
                                             <div class="form-body">
@@ -65,7 +66,7 @@ $tampil     = mysqli_fetch_array($kueri);
                                                     </div>
                                                     <div class="col-md-4">
                                                         <!-- EDIT ID -->
-                                                        <input type="hidden" name="id" value="<?= $tampil['id']; ?>">
+                                                        <input type="hidden" name="id" value="<?= $tampil['agama_id']; ?>">
                                                         <!-- EDIT ID -->
                                                         <input type="text" placeholder="Masukan Agama..." name="agama" value="<?= $tampil['agama']; ?>" required="required" class="form-control">        
                                                     </div>

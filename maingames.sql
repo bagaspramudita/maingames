@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2016 at 04:25 PM
+-- Generation Time: Nov 05, 2016 at 08:22 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -38,7 +38,9 @@ CREATE TABLE `agama` (
 INSERT INTO `agama` (`agama_id`, `agama`) VALUES
 (5, 'Islam'),
 (6, 'Kristen'),
-(7, 'Budha');
+(7, 'Budha'),
+(9, 'Hindu'),
+(10, 'Konghucu');
 
 -- --------------------------------------------------------
 
@@ -57,7 +59,9 @@ CREATE TABLE `bentuk_wajah` (
 
 INSERT INTO `bentuk_wajah` (`bentuk_id`, `bentuk`) VALUES
 (2, 'Kotak'),
-(3, 'Oval (Lonjong)');
+(3, 'Oval (Lonjong)'),
+(4, 'Bulat (Tembam)'),
+(5, 'Persegi (Cameuh)');
 
 -- --------------------------------------------------------
 
@@ -99,9 +103,14 @@ CREATE TABLE `jabatan` (
 --
 
 INSERT INTO `jabatan` (`jabatan_id`, `jabatan`) VALUES
-(2, 'CEO (Chief Technical Officer)'),
+(2, 'CTO (Chief Technical Officer)'),
 (3, 'CEO (Chief Executive Officer)'),
-(4, 'Office Boy (OB)');
+(4, 'Office Boy (OB)'),
+(5, 'Product Manager'),
+(6, 'Content Editor'),
+(8, 'Content Director'),
+(9, 'HRD & Finance'),
+(10, 'Content Writer');
 
 -- --------------------------------------------------------
 
@@ -120,7 +129,10 @@ CREATE TABLE `jenis_rambut` (
 
 INSERT INTO `jenis_rambut` (`jenis_id`, `jenis`) VALUES
 (3, 'Ikal Lurus'),
-(4, 'Kribo Ikal');
+(4, 'Kribo Ikal'),
+(6, 'Botak Licin'),
+(7, 'Botak Halus'),
+(8, 'Ikal Bergelombang');
 
 -- --------------------------------------------------------
 
@@ -259,7 +271,9 @@ CREATE TABLE `status_pegawai` (
 
 INSERT INTO `status_pegawai` (`status_id`, `status_pegawai`) VALUES
 (2, 'Karyawan Tetap'),
-(3, 'Honorer');
+(3, 'Karyawan Kontrak'),
+(5, 'Masa Probation (3 bulan)'),
+(6, 'Masa Probation (6 bulan)');
 
 -- --------------------------------------------------------
 
@@ -335,7 +349,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `nip`, `nama`, `email`, `password`, `agama`, `tanggal_lahir`, `bulan_lahir`, `tahun_lahir`, `jenis_kelamin`, `status_pegawai`, `tanggal_masuk`, `bulan_masuk`, `tahun_masuk`, `alamat`, `kelurahan`, `kecamatan`, `kota`, `propinsi`, `kode_pos`, `pendidikan_terakhir`, `bentuk_wajah`, `jenis_rambut`, `status_pernikahan`, `jabatan`, `foto`, `golongan_darah`, `tinggi_badan`, `berat_badan`, `warna_kulit`, `no_ktp`, `npwp`, `is_admin`) VALUES
 (6, 130102023, 'Bagas Pramudita', 'bagas@gmail.com', 'ee776a18253721efe8a62e4abd29dc47', 5, 31, 'Juli', 1995, 'Laki-laki', '2', 8, 'Januari', 1995, 'Jalan Bambu No. 79', 'Kreo', 'Larangan', 'tangerang', 'Banten', 15156, 'SMA', 2, 3, 'Menikah', 3, 'idm-logo.png', 'B', 173, 70, 'Putih Kecoklatan', 123456789, 987654321, 1),
-(20, 130102022, 'Ali Sadewa', 'ali@gmail.com', 'ee776a18253721efe8a62e4abd29dc47', 6, 31, 'Juli', 1996, 'Laki-laki', '3', 31, 'Juni', 2014, 'Palmerah', 'Kreo', 'Larangan', 'Tangerang', 'Banten', 15156, 'SMA', 3, 4, 'Menikah', 4, 'IMG-20161021-WA0001.jpg', 'AB', 170, 70, 'Coklat Sawo Matang', 123123123, 123123123, 0);
+(20, 130102022, 'Ali Sadewa', 'ali@gmail.com', 'ee776a18253721efe8a62e4abd29dc47', 6, 31, 'Februari', 1996, 'Laki-laki', '3', 31, 'Juni', 2014, 'Palmerah', 'Kreo', 'Larangan', 'Tangerang', 'Banten', 15156, 'SMA', 4, 3, 'Janda', 4, 'IMG-20161021-WA0001.jpg', 'AB', 170, 70, 'Coklat Sawo Matang', 123123123, 123123123, 0);
 
 --
 -- Indexes for dumped tables
@@ -427,12 +441,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `agama`
 --
 ALTER TABLE `agama`
-  MODIFY `agama_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `agama_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `bentuk_wajah`
 --
 ALTER TABLE `bentuk_wajah`
-  MODIFY `bentuk_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `bentuk_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `cuti`
 --
@@ -442,12 +456,12 @@ ALTER TABLE `cuti`
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `jabatan_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `jabatan_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jenis_rambut`
 --
 ALTER TABLE `jenis_rambut`
-  MODIFY `jenis_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `jenis_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `klaim`
 --
@@ -477,7 +491,7 @@ ALTER TABLE `rekening`
 -- AUTO_INCREMENT for table `status_pegawai`
 --
 ALTER TABLE `status_pegawai`
-  MODIFY `status_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `status_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user`
 --
