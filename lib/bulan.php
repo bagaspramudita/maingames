@@ -1,5 +1,6 @@
 <?php 
 $bulan 			= array(
+				  'Bulan',
 				  'Januari',
 				  'Februari',
 				  'Maret',

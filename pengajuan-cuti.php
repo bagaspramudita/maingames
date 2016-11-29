@@ -62,6 +62,7 @@ $slug       = "pengajuan-cuti";
                                             </thead>
                                             <tbody>
                                             <?php
+                                            include 'lib/bulan.php';
                                             $idus       = $_SESSION['id'];
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
@@ -87,9 +88,9 @@ $slug       = "pengajuan-cuti";
                                                 <tr>
                                                     <td class="text-center"><?= $no; ?></td>
                                                     <td class="text-center"><strong><?= $tampil['nama']; ?></strong></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_mulai']." ".$tampil['bulan_mulai']." ".$tampil['tahun_mulai']; ?></td>
+                                                    <td class="text-center"><?php echo $tampil['tanggal_mulai']; $thismonth = $tampil['bulan_mulai']; echo " ".$bulan[$thismonth]." "; echo $tampil['tahun_mulai']; ?></td>
                                                     <td class="text-center"><?= $tampil['durasi']." hari"; ?></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_berakhir']." ".$tampil['bulan_berakhir']." ".$tampil['tahun_berakhir']; ?></td>
+                                                    <td class="text-center"><?php echo $tampil['tanggal_berakhir']; $thismonth = $tampil['bulan_berakhir']; echo " ".$bulan[$thismonth]." "; echo $tampil['tahun_berakhir']; ?></td>
                                                     <td class="text-center">
                                                         <?php
                                                             if($tampil['status']==0) {
