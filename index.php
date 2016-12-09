@@ -51,7 +51,7 @@ $page 		= "Dashboard";
                                                         <label class="control-label">NIP</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input value="<?= $_GET['nip']; ?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" placeholder="Nama Pegawai..." name="nip" class="form-control">
+                                                        <input maxlength="25" value="<?= $_GET['nip']; ?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" placeholder="Nama Pegawai..." name="nip" class="form-control">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label class="control-label">Status Pegawai</label>
@@ -132,7 +132,7 @@ $page 		= "Dashboard";
                                                         <label class="control-label">Email</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input value="<?= $_GET['email']; ?>" type="text" placeholder="Email..." name="email" class="form-control">  
+                                                        <input value="<?= $_GET['email']; ?>" type="email" placeholder="Email..." name="email" class="form-control">  
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label class="control-label">Pendidikan Terakhir</label>

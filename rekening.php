@@ -92,7 +92,7 @@ if($cekra == 1) {
                                                         <label class="control-label col-md-12">No. Rekening</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required name="no_rekening" placeholder="No. Rekening" class="form-control" value="<?= ($cekra == 1 ? $tampal['no_rekening'] : ""); ?>"></label>
+                                                        <input type="text" maxlength="15" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required name="no_rekening" placeholder="No. Rekening" class="form-control" value="<?= ($cekra == 1 ? $tampal['no_rekening'] : ""); ?>"></label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

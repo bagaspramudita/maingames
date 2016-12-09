@@ -62,6 +62,7 @@ $slug       = "permintaan-cuti";
                                             </thead>
                                             <tbody>
                                             <?php
+                                            include 'lib/bulan.php';
                                             $no         = 0;
                                             $kueri      = mysqli_query($conn,"
                                                           SELECT * FROM user
@@ -81,9 +82,9 @@ $slug       = "permintaan-cuti";
                                                 <tr>
                                                     <td class="text-center"><?= $no; ?></td>
                                                     <td class="text-center"><strong><?= $tampil['nama']; ?></strong></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_mulai']." ".$tampil['bulan_mulai']." ".$tampil['tahun_mulai']; ?></td>
+                                                    <td class="text-center"><?= $tampil['tanggal_mulai']." ".$bulan[$tampil[bulan_mulai]]." ".$tampil['tahun_mulai']; ?></td>
                                                     <td class="text-center"><?= $tampil['durasi']." hari"; ?></td>
-                                                    <td class="text-center"><?= $tampil['tanggal_berakhir']." ".$tampil['bulan_berakhir']." ".$tampil['tahun_berakhir']; ?></td>
+                                                    <td class="text-center"><?= $tampil['tanggal_berakhir']." ".$bulan[$tampil[bulan_berakhir]]." ".$tampil['tahun_berakhir']; ?></td>
                                                     <td class="text-center">
                                                     <button class='btn btn-xs yellow popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='<?= $tampil['alasan']; ?>' data-original-title='Alasan Cuti'>Lihat</button>
                                                     </td>

@@ -56,7 +56,7 @@ $nav1       = "Tambah";
                                                         <label class="control-label col-md-12">NIP<br/><i>(Nomor Induk Pegawai)</i></label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="text" placeholder="NIP" name="nip" required="required" class="form-control">        
+                                                        <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" placeholder="NIP" name="nip" required="required" class="form-control">        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -88,7 +88,7 @@ $nav1       = "Tambah";
                                                         <label class="control-label col-md-12">Nomor KTP</label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="text" placeholder="Nomor KTP" name="noktp" required="required" class="form-control">        
+                                                        <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" placeholder="Nomor KTP" name="noktp" required="required" class="form-control">        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -96,7 +96,7 @@ $nav1       = "Tambah";
                                                         <label class="control-label col-md-12">NPWP</label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="text" placeholder="NPWP" name="npwp" required="required" class="form-control">        
+                                                        <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" placeholder="NPWP" name="npwp" required="required" class="form-control">        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -121,7 +121,7 @@ $nav1       = "Tambah";
                                                     <div class="col-md-4">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">
-                                                                <input type="number" placeholder="Tanggal" class="form-control" name="tgl_lahir">
+                                                                <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="number" placeholder="Tanggal" class="form-control" name="tgl_lahir">
                                                             </span>
                                                             <span class="input-group-addon">
                                                                 <select name="bln_lahir" class="form-control" required>
@@ -308,7 +308,7 @@ $nav1       = "Tambah";
                                                         <label class="control-label col-md-12">Foto</label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="file" name="foto" class="form-control">
+                                                        <input required type="file" name="foto" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -343,13 +343,13 @@ $nav1       = "Tambah";
                                                     <div class="col-md-4">
                                                         <span class="input-group-addon">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control" placeholder="Tinggi" name="tinggi_badan" ">
+                                                                <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" class="form-control" placeholder="Tinggi" name="tinggi_badan" ">
                                                                 <span class="input-group-addon" id="sizing-addon1">cm</span>
                                                             </div>
                                                         </span>
                                                         <span class="input-group-addon">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control" placeholder="Berat" name="berat_badan">
+                                                                <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" class="form-control" placeholder="Berat" name="berat_badan">
                                                                 <span class="input-group-addon" id="sizing-addon1">kg</span>
                                                             </div>
                                                         </span>

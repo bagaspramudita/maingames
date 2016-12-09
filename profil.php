@@ -53,15 +53,15 @@ $nav1       = "Edit";
                                     $id         = abs($_SESSION['id']);
                                     $kueri      = mysqli_query($conn,"
                                                   SELECT * FROM user
-                                                  JOIN agama
+                                                  LEFT JOIN agama
                                                   ON user.agama             = agama.agama_id
-                                                  JOIN bentuk_wajah
+                                                  LEFT JOIN bentuk_wajah
                                                   ON user.bentuk_wajah      = bentuk_wajah.bentuk_id
-                                                  JOIN status_pegawai
+                                                  LEFT JOIN status_pegawai
                                                   ON user.status_pegawai    = status_pegawai.status_id
-                                                  JOIN jenis_rambut
+                                                  LEFT JOIN jenis_rambut
                                                   ON user.jenis_rambut      = jenis_rambut.jenis_id
-                                                  JOIN jabatan
+                                                  LEFT JOIN jabatan
                                                   ON user.jabatan           = jabatan.jabatan_id
                                                   WHERE id = '$id'
                                                   ");
@@ -103,7 +103,7 @@ $nav1       = "Edit";
                                                         <label class="control-label col-md-12">Nomor KTP</label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="text" placeholder="Nomor KTP" name="noktp" value="<?= $tampil['no_ktp']; ?>" required="required" class="form-control">        
+                                                        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Nomor KTP" name="noktp" value="<?= $tampil['no_ktp']; ?>" required="required" class="form-control">        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -111,7 +111,7 @@ $nav1       = "Edit";
                                                         <label class="control-label col-md-12">NPWP</label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="text" placeholder="NPWP" name="npwp" value="<?= $tampil['npwp']; ?>" class="form-control">        
+                                                        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="NPWP" name="npwp" value="<?= $tampil['npwp']; ?>" class="form-control">        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -376,13 +376,13 @@ $nav1       = "Edit";
                                                     <div class="col-md-4">
                                                         <span class="input-group-addon">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control" placeholder="Tinggi" name="tinggi_badan" value="<?= $tampil['tinggi_badan']; ?>">
+                                                                <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" class="form-control" placeholder="Tinggi" name="tinggi_badan" value="<?= $tampil['tinggi_badan']; ?>">
                                                                 <span class="input-group-addon" id="sizing-addon1">cm</span>
                                                             </div>
                                                         </span>
                                                         <span class="input-group-addon">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control" placeholder="Berat" name="berat_badan" value="<?= $tampil['berat_badan']; ?>">
+                                                                <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" class="form-control" placeholder="Berat" name="berat_badan" value="<?= $tampil['berat_badan']; ?>">
                                                                 <span class="input-group-addon" id="sizing-addon1">kg</span>
                                                             </div>
                                                         </span>

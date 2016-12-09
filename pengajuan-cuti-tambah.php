@@ -114,7 +114,7 @@ $nav1       = "Tambah";
                                                     <div class="col-md-6">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">
-                                                                <input maxlength="2" value="<?= date('d'); ?>" type="number" placeholder="Tanggal" class="form-control" name="tanggal_mulai">
+                                                                <input maxlength="2" value="<?= date('j'); ?>" type="number" placeholder="Tanggal" class="form-control" name="tanggal_mulai">
                                                             </span>
                                                             <span class="input-group-addon">
                                                                 <select name="bulan_mulai" class="form-control" required>
@@ -151,7 +151,7 @@ $nav1       = "Tambah";
                                                         <div class="input-group">
                                                             <span class="input-group-addon">
                                                                 <?php
-                                                                $today      = 31;
+                                                                $today      = date('j');
                                                                 if($today > 28 AND $today <= 31) {
                                                                     $besok  = 32 - $today;
                                                                 } else {
@@ -164,7 +164,7 @@ $nav1       = "Tambah";
                                                                 <select name="bulan_berakhir" class="form-control" required>
                                                                 <?php
                                                                 if($today > $besok) { ?>
-                                                                    <option value="<?= date('n')+1; ?>"><?= $bulan[date('n')+1];  ?></option>
+                                                                    <option value="<?= date('n')+1; ?>"><?php if(date('n')==12) { echo $bulan[1]; } ?></option>
                                                                 <?php } else { ?>
                                                                     <option value="<?= date('n'); ?>"><?= $bulan[date('n')];  ?></option>
                                                                 <?php } ?>

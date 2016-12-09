@@ -92,7 +92,7 @@ $nav1       = "Tambah";
                                                     <div class="col-md-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon" id="sizing-addon1">Rp</span>
-                                                            <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" type="text" class="form-control" placeholder="Jumlah" name="jumlah">
+                                                            <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8" type="text" class="form-control" placeholder="Jumlah" name="jumlah">
                                                         </div>
                                                     </div>
                                                 </div>
