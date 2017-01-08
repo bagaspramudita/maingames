@@ -31,11 +31,11 @@ $notifikasi         = $hitung + $hitang;
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li style="border-bottom:1px solid #3d4957;" class="nav-item <?php echo ($page == "Lowongan" ? 'active open' : ''); ?>">
+                    <?php /*<li style="border-bottom:1px solid #3d4957;" class="nav-item <?php echo ($page == "Lowongan" ? 'active open' : ''); ?>">
                         <a style="margin-bottom: 8px" href="lowongan.php" class="nav-link ">
                             <span class="title">Lowongan Kerja</span>
                         </a>
-                    </li>
+                    </li> */ ?>
                     <li class="nav-item <?php echo ($page == "Agama" ? 'active open' : ''); ?>">
                         <a href="agama.php" class="nav-link ">
                             <span class="title">Agama</span>

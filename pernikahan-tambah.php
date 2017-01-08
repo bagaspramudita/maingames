@@ -61,8 +61,6 @@ $nav1       = "Tambah";
                                                             <?php
                                                             $kueri2      = mysqli_query($conn,"
                                                                                             SELECT * FROM user 
-                                                                                            JOIN suami_istri
-                                                                                            ON user.id != suami_istri.user_id
                                                                                             WHERE status_pernikahan = 'Menikah'
                                                                                         ");
                                                             while ($tampil2 = mysqli_fetch_array($kueri2)) { ?>

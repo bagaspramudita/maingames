@@ -70,7 +70,7 @@ $slug       = "permintaan-cuti";
                                                           ON user.id = cuti.user_id
                                                           JOIN log_cuti
                                                           ON user.id = log_cuti.user_id
-                                                          WHERE log_cuti.status = 0
+                                                          ORDER BY log_id DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
                                             if($cekdata == 0) { ?>
@@ -89,8 +89,15 @@ $slug       = "permintaan-cuti";
                                                     <button class='btn btn-xs yellow popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='<?= $tampil['alasan']; ?>' data-original-title='Alasan Cuti'>Lihat</button>
                                                     </td>
                                                     <td align="center">
-                                                        <a onclick="javascript:return confirm('Terima Cuti ini?');" href="lib/<?= strtolower($slug); ?>-terima.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs blue <?= $status; ?>">Terima<i class="fa fa-check"></i></a>
-                                                        <a onclick="javascript:return confirm('Tolak Cuti ini?');" href="lib/<?= strtolower($slug); ?>-tolak.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs red <?= $status; ?>">Tolak<i class="fa fa-close"></i></a>
+                                                        <?php
+                                                        if($tampil['status'] == 0) { ?>
+                                                            <a onclick="javascript:return confirm('Terima Cuti ini?');" href="lib/<?= strtolower($slug); ?>-terima.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs blue <?= $status; ?>">Terima<i class="fa fa-check"></i></a>
+                                                            <a onclick="javascript:return confirm('Tolak Cuti ini?');" href="lib/<?= strtolower($slug); ?>-tolak.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs red <?= $status; ?>">Tolak<i class="fa fa-close"></i></a>
+                                                        <?php } elseif($tampil['status'] == 1) { ?>
+                                                            <button class='btn btn-xs blue'>Disetujui</button>
+                                                        <?php } elseif($tampil['status'] == 2) { ?>
+                                                            <button class='btn btn-xs red'>Ditolak</button>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                             <?php } }?>

@@ -48,6 +48,7 @@ $nav1       = "Edit";
                                         </div>
                                     </div>
                                     <div class="portlet-body">
+                                    <?php include 'lib/notifikasi.php'; ?>
                                     <?php
                                     // Begin Edit Library
                                     $id         = abs($_SESSION['id']);

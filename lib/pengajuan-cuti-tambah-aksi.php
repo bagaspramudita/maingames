@@ -87,7 +87,7 @@ if($tanggal_mulai == 0 OR $tanggal_berakhir == 0 OR $tahun_mulai == 0 OR $tahun_
 				header('location:../pengajuan-cuti.php?act=gagal');
 			}
 		} else {
-			if($jenis == "Cuti Melahirkan" || $jenis == "Cuti Menikah") {
+			if($jenis == "Cuti Melahirkan") {
 				if($cekbulan == 2) {
 					$durasicuti		= ($tanggal_berakhir + 60) - $tanggal_mulai;
 					$kueri 					= mysqli_query($conn,"
@@ -171,7 +171,7 @@ if($tanggal_mulai == 0 OR $tanggal_berakhir == 0 OR $tahun_mulai == 0 OR $tahun_
 			} else {
 				echo ("
 					<script language='javascript'>
-				    window.alert('Selain Cuti Menikah dan Cuti Melahirkan, batas maksimal cuti adalah 30 hari.');
+				    window.alert('Selain Cuti Melahirkan, batas maksimal cuti adalah 30 hari.');
 				    window.location.href='../pengajuan-cuti-tambah.php';
 				    </script>
 					");
@@ -258,45 +258,61 @@ if($tanggal_mulai == 0 OR $tanggal_berakhir == 0 OR $tahun_mulai == 0 OR $tahun_
 				header('location:../pengajuan-cuti.php?act=gagal');
 			}
 		} elseif($cekbulan == 2) {
-			$durasicuti		= ($tanggal_berakhir + 60) - $tanggal_mulai;
+			if($jenis == "Cuti Melahirkan") {
+				$durasicuti		= ($tanggal_berakhir + 60) - $tanggal_mulai;
 
-			$kueri 					= mysqli_query($conn,"
-									  INSERT INTO log_cuti (
-									  log_id,
-									  cuti_id,
-									  user_id,
-									  jenis_cuti,
-									  alasan,
-									  tanggal_mulai,
-									  bulan_mulai,
-									  tahun_mulai,
-									  durasi,
-									  tanggal_berakhir,
-									  bulan_berakhir,
-									  tahun_berakhir,
-									  status
-									  )
-									  VALUES (
-									  '',
-									  '$cuti_id',
-									  '$user_id',
-									  '$jenis',
-									  '$alasan',
-									  '$tanggal_mulai',
-									  '$bulan_mulai',
-									  '$tahun_mulai',
-									  '$durasicuti',
-									  '$tanggal_berakhir',
-									  '$bulan_berakhir',
-									  '$tahun_berakhir',
-									  '$status'
-									  )
-									  ");
-			if($kueri) {
-				header('location:../pengajuan-cuti.php?act=sukses');
+				$kueri 					= mysqli_query($conn,"
+										  INSERT INTO log_cuti (
+										  log_id,
+										  cuti_id,
+										  user_id,
+										  jenis_cuti,
+										  alasan,
+										  tanggal_mulai,
+										  bulan_mulai,
+										  tahun_mulai,
+										  durasi,
+										  tanggal_berakhir,
+										  bulan_berakhir,
+										  tahun_berakhir,
+										  status
+										  )
+										  VALUES (
+										  '',
+										  '$cuti_id',
+										  '$user_id',
+										  '$jenis',
+										  '$alasan',
+										  '$tanggal_mulai',
+										  '$bulan_mulai',
+										  '$tahun_mulai',
+										  '$durasicuti',
+										  '$tanggal_berakhir',
+										  '$bulan_berakhir',
+										  '$tahun_berakhir',
+										  '$status'
+										  )
+										  ");
+				if($kueri) {
+					header('location:../pengajuan-cuti.php?act=sukses');
+				} else {
+					header('location:../pengajuan-cuti.php?act=gagal');
+				}
 			} else {
-				header('location:../pengajuan-cuti.php?act=gagal');
+				echo ("
+					<script language='javascript'>
+				    window.alert('Selain Cuti Melahirkan, batas maksimal cuti adalah 30 hari.');
+				    window.location.href='../pengajuan-cuti-tambah.php';
+				    </script>
+					");
 			}
+		} else {
+			echo ("
+					<script language='javascript'>
+				    window.alert('Selain Cuti Melahirkan, batas maksimal cuti adalah 30 hari.');
+				    window.location.href='../pengajuan-cuti-tambah.php';
+				    </script>
+					");
 		}
 	}
 }
