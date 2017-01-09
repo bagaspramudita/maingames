@@ -69,6 +69,7 @@ $slug       = "pengajuan-klaim";
                                                           JOIN klaim
                                                           ON user.id = klaim.user_id
                                                           WHERE klaim.user_id = '".$_SESSION['id']."'
+                                                          ORDER BY klaim.klaim_id DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
                                             if($cekdata == 0) { ?>
@@ -89,13 +90,14 @@ $slug       = "pengajuan-klaim";
                                                     <td class="text-center">
                                                         <?php
                                                             if($tampil['status']==1) {
-                                                                echo "<button class='btn btn-xs warning popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Sedang menunggu persetujuan dari atasan.' data-original-title='Status Cuti'>Pending</button>";
+                                                                echo "<button class='btn btn-xs warning popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Sedang menunggu persetujuan dari HRD.' data-original-title='Status Klaim'>Pending</button>";
                                                                 $status = "";
                                                             } elseif($tampil['status']==2) {
-                                                                echo "<button class='btn btn-xs blue popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Cuti Anda telah diterima.' data-original-title='Status Cuti'>Diterima</button>";
+                                                                echo "<button class='btn btn-xs blue popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Klaim Anda telah diterima.' data-original-title='Status Klaims'>Diterima</button>";
                                                                 $status = "disabled";
                                                             } elseif($tampil['status']==3) {
-                                                                echo "<button class='btn btn-xs red popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Cuti Anda Ditolak!' data-original-title='Status Cuti'>Ditolak</button>";
+                                                                echo "<button class='btn btn-xs red popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Klaim Anda Ditolak!' data-original-title='Status Klaim'>Ditolak</button>";
+                                                                $status = "disabled";
                                                             }
                                                         ?>
                                                     </td>

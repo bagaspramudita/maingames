@@ -67,7 +67,7 @@ $slug       = "permintaan-klaim";
                                                           SELECT * FROM user
                                                           JOIN klaim
                                                           ON user.id = klaim.user_id
-                                                          WHERE klaim.status = 1
+                                                          ORDER BY klaim_id DESC
                                                           ");
                                             $cekdata    = mysqli_num_rows($kueri);
                                             if($cekdata == 0) { ?>
@@ -84,8 +84,15 @@ $slug       = "permintaan-klaim";
                                                     <td class="text-center"><?= $tampil['metode_pembayaran']; ?></td>
                                                     <td class="text-center"><a target="_blank" href="assets/klaim/<?= $tampil['bukti_pembelian']; ?>">Unduh</a></td>
                                                     <td align="center">
-                                                        <a onclick="javascript:return confirm('Terima Klaim ini?');" href="lib/<?= strtolower($slug); ?>-terima.php?id=<?=$tampil['klaim_id']; ?>" class="btn btn-xs blue <?= $status; ?>">Terima<i class="fa fa-check"></i></a>
+                                                        <?php
+                                                        if($tampil['status'] == 1) { ?>
+                                                            <a onclick="javascript:return confirm('Terima Klaim ini?');" href="lib/<?= strtolower($slug); ?>-terima.php?id=<?=$tampil['klaim_id']; ?>" class="btn btn-xs blue <?= $status; ?>">Terima<i class="fa fa-check"></i></a>
                                                         <a onclick="javascript:return confirm('Tolak Klaim ini?');" href="lib/<?= strtolower($slug); ?>-tolak.php?id=<?=$tampil['klaim_id']; ?>" class="btn btn-xs red <?= $status; ?>">Tolak<i class="fa fa-close"></i></a>
+                                                        <?php } elseif($tampil['status'] == 2) { ?>
+                                                            <button class='btn btn-xs blue'>Disetujui</button>
+                                                        <?php } elseif($tampil['status'] == 3) { ?>
+                                                            <button class='btn btn-xs red'>Ditolak</button>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                             <?php } }?>

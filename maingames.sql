@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2016 at 08:22 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: Jan 09, 2017 at 12:34 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.5.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -105,12 +105,11 @@ CREATE TABLE `jabatan` (
 INSERT INTO `jabatan` (`jabatan_id`, `jabatan`) VALUES
 (2, 'CTO (Chief Technical Officer)'),
 (3, 'CEO (Chief Executive Officer)'),
-(4, 'Office Boy (OB)'),
+(4, 'Finance Staff'),
 (5, 'Product Manager'),
-(6, 'Content Editor'),
-(8, 'Content Director'),
-(9, 'HRD & Finance'),
-(10, 'Content Writer');
+(6, 'Head Finance'),
+(8, 'HR Staff'),
+(9, 'HR Manager');
 
 -- --------------------------------------------------------
 
@@ -156,7 +155,9 @@ CREATE TABLE `klaim` (
 --
 
 INSERT INTO `klaim` (`klaim_id`, `user_id`, `subjek`, `deskripsi`, `jumlah`, `metode_pembayaran`, `bukti_pembelian`, `status`) VALUES
-(4, 20, 'Beli Tas Gunung', 'Untuk naik gunung', 180000, 'Transfer', 'day-3.png', 2);
+(4, 20, 'Beli Tas Gunung', 'Untuk naik gunung', 180000, 'Transfer', 'day-3.png', 2),
+(6, 20, 'Berat bos', 'asdasd', 121212, 'Cash', 'Activity Diagram Pengajuan Klaim (1).png', 2),
+(7, 20, 'Sidang Polisi', 'Deskripsi Klaim', 12345678, 'Cash', '7778.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,7 @@ CREATE TABLE `log_cuti` (
   `tahun_mulai` int(4) NOT NULL,
   `durasi` int(3) NOT NULL,
   `tanggal_berakhir` int(2) NOT NULL,
-  `bulan_berakhir` varchar(40) NOT NULL,
+  `bulan_berakhir` int(3) NOT NULL,
   `tahun_berakhir` int(4) NOT NULL,
   `status` int(2) NOT NULL,
   `keterangan` text NOT NULL
@@ -186,9 +187,12 @@ CREATE TABLE `log_cuti` (
 --
 
 INSERT INTO `log_cuti` (`log_id`, `cuti_id`, `user_id`, `jenis_cuti`, `alasan`, `tanggal_mulai`, `bulan_mulai`, `tahun_mulai`, `durasi`, `tanggal_berakhir`, `bulan_berakhir`, `tahun_berakhir`, `status`, `keterangan`) VALUES
-(2, 10, 20, 'Cuti Tahunan', 'Ada ursan keluarga...', 13, 'Januari', 2016, 12, 14, 'Februari', 2017, 1, ''),
-(3, 10, 20, 'Cuti Tahunan', 'Istri Melahirkan', 31, 'Februari', 2016, 1, 6, 'September', 2016, 1, ''),
-(5, 10, 20, 'Cuti Tahunan', 'Sakit\r\n', 2, 'November', 2016, 2, 4, 'November', 2016, 1, '');
+(8, 10, 20, 'Cuti Tahunan', 'Cuti Saja', 29, '11', 2016, 2, 1, 12, 2016, 1, ''),
+(9, 10, 20, 'Cuti Sakit', 'Cuti Vroh\r\n', 29, '11', 2016, 2, 1, 12, 2016, 2, ''),
+(11, 10, 20, 'Cuti Tahunan', 'sakit\r\n', 8, '12', 2016, 2, 10, 12, 2016, 1, ''),
+(12, 10, 20, 'Cuti Tahunan', 'Acara Keluarga', 8, '1', 2017, 3, 11, 1, 2017, 1, ''),
+(18, 10, 20, 'Cuti Tahunan', 'Acara Keluarga', 8, '1', 2017, 2, 10, 1, 2017, 1, ''),
+(19, 10, 20, 'Cuti Tahunan', 'Tes', 8, '1', 2017, 2, 10, 1, 2017, 2, '');
 
 -- --------------------------------------------------------
 
@@ -231,7 +235,7 @@ CREATE TABLE `perusahaan` (
 --
 
 INSERT INTO `perusahaan` (`id`, `nama_perusahaan`, `alamat`, `notelp`, `kodepos`, `logo`) VALUES
-(1, 'PT MP Games', 'Gandaria City', '021-5851234', 12240, 'mini-logo.jpg');
+(1, 'PT MP Games', 'Gandaria 8 Office Tower, Lt. 9 Unit D-E, Kebayoran Lama - Jakarta Selatan', '021-5851234', 12240, 'mini-logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -294,13 +298,6 @@ CREATE TABLE `suami_istri` (
   `jumlah_anak` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `suami_istri`
---
-
-INSERT INTO `suami_istri` (`user_id`, `sebagai`, `suami_istri`, `tgl_lahir`, `bln_lahir`, `thn_lahir`, `tanggal_menikah`, `bulan_menikah`, `tahun_menikah`, `jumlah_anak`) VALUES
-(6, 'Istri', 'Nikita Saro', 23, 'Maret', 1995, 21, 'Februari', 2017, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -348,8 +345,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nip`, `nama`, `email`, `password`, `agama`, `tanggal_lahir`, `bulan_lahir`, `tahun_lahir`, `jenis_kelamin`, `status_pegawai`, `tanggal_masuk`, `bulan_masuk`, `tahun_masuk`, `alamat`, `kelurahan`, `kecamatan`, `kota`, `propinsi`, `kode_pos`, `pendidikan_terakhir`, `bentuk_wajah`, `jenis_rambut`, `status_pernikahan`, `jabatan`, `foto`, `golongan_darah`, `tinggi_badan`, `berat_badan`, `warna_kulit`, `no_ktp`, `npwp`, `is_admin`) VALUES
-(6, 130102023, 'Bagas Pramudita', 'bagas@gmail.com', 'ee776a18253721efe8a62e4abd29dc47', 5, 31, 'Juli', 1995, 'Laki-laki', '2', 8, 'Januari', 1995, 'Jalan Bambu No. 79', 'Kreo', 'Larangan', 'tangerang', 'Banten', 15156, 'SMA', 2, 3, 'Menikah', 3, 'idm-logo.png', 'B', 173, 70, 'Putih Kecoklatan', 123456789, 987654321, 1),
-(20, 130102022, 'Ali Sadewa', 'ali@gmail.com', 'ee776a18253721efe8a62e4abd29dc47', 6, 31, 'Februari', 1996, 'Laki-laki', '3', 31, 'Juni', 2014, 'Palmerah', 'Kreo', 'Larangan', 'Tangerang', 'Banten', 15156, 'SMA', 4, 3, 'Janda', 4, 'IMG-20161021-WA0001.jpg', 'AB', 170, 70, 'Coklat Sawo Matang', 123123123, 123123123, 0);
+(6, 130102023, 'Bagas Pramudita', 'hrd@maingames.com', 'ee776a18253721efe8a62e4abd29dc47', 5, 31, 'Juli', 1995, 'Laki-laki', '2', 8, 'Januari', 1995, 'Jalan Bambu No. 79', 'Kreo', 'Larangan', 'tangerang', 'Banten', 15156, 'SMA', 2, 3, 'Belum Menikah', 9, 'BAGAS 3x4.jpg', 'B', 173, 70, 'Putih Kecoklatan', 123456789, 987654321, 1),
+(20, 130102022, 'Ali Sadewo', 'pegawai@maingames.com', 'ee776a18253721efe8a62e4abd29dc47', 6, 31, 'Februari', 1996, 'Laki-laki', '5', 31, 'Juni', 2014, 'Palmerah', 'Kreo', 'Larangan', 'Tangerang', 'Banten', 15156, 'SMA', 4, 3, 'Menikah', 4, 'alisadewo.jpg', 'AB', 170, 70, 'Coklat Sawo Matang', 123123123, 123123123, 0);
 
 --
 -- Indexes for dumped tables
@@ -446,7 +443,7 @@ ALTER TABLE `agama`
 -- AUTO_INCREMENT for table `bentuk_wajah`
 --
 ALTER TABLE `bentuk_wajah`
-  MODIFY `bentuk_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `bentuk_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `cuti`
 --
@@ -456,7 +453,7 @@ ALTER TABLE `cuti`
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `jabatan_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `jabatan_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `jenis_rambut`
 --
@@ -466,12 +463,12 @@ ALTER TABLE `jenis_rambut`
 -- AUTO_INCREMENT for table `klaim`
 --
 ALTER TABLE `klaim`
-  MODIFY `klaim_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `klaim_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `log_cuti`
 --
 ALTER TABLE `log_cuti`
-  MODIFY `log_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `log_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `lowongan`
 --

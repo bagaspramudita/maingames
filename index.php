@@ -270,7 +270,7 @@ $page 		= "Dashboard";
                                         $cekdata                = mysqli_num_rows($kueri);
                                         if($cekdata == 0) { ?>
                                             <tr>
-                                                <td align="center" colspan="6">Silahkan memulai pencarian.
+                                                <td align="center" colspan="7">Silahkan memulai pencarian.
                                                     </td>
                                             </tr>
                                         <?php } else {
@@ -283,13 +283,13 @@ $page 		= "Dashboard";
                                                 <td class="text-center"><?= $tampil['status_pernikahan']; ?></td>
                                                 <td class="text-center"><?= $tampil['tanggal_lahir']." ".$tampil['bulan_lahir']." ".$tampil['tahun_lahir']; ?></td>
                                                 <td align="center">
-                                                    <a href="<?= strtolower($slug); ?>-lihat.php?id=<?= $tampil['id']; ?>" class="btn btn-xs purple">Lihat<i class="fa fa-user"></i></a>
+                                                    <a href="pegawai-lihat.php?id=<?= $tampil['id']; ?>" class="btn btn-xs purple">Lihat<i class="fa fa-user"></i></a>
                                                     <?php 
                                                     if($tampil['id']==$_SESSION['id'] && $_SESSION['is_admin']==0) { ?>
-                                                        <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a>
+                                                        <a href="pegawai-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a>
                                                     <?php } else { 
                                                         if($_SESSION['is_admin']==1) { ?>
-                                                            <a href="<?= strtolower($slug); ?>-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a>
+                                                            <a href="pegawai-edit.php?id=<?= $tampil['id']; ?>" class="btn btn-xs blue">Edit<i class="fa fa-edit"></i></a>
                                                         <?php } else { ?>
                                                     <a href="" class="btn btn-xs blue disabled">Edit<i class="fa fa-edit"></i></a>
                                                     <?php } } ?>
