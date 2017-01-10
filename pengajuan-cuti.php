@@ -104,7 +104,7 @@ $slug       = "pengajuan-cuti";
                                                                 $status = "disabled";
                                                             }
                                                         ?>
-                                                    </td>ssss
+                                                    </td>
                                                     <td align="center">
                                                         <a onclick="javascript:return confirm('Yakin ingin batalkan cuti ini?');" href="lib/<?= strtolower($slug); ?>-hapus.php?id=<?=$tampil['log_id']; ?>" class="btn btn-xs red <?= $status; ?>">Batalkan<i class="fa fa-close"></i></a>
                                                     </td>

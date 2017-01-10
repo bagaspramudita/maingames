@@ -93,7 +93,7 @@ $slug       = "pengajuan-klaim";
                                                                 echo "<button class='btn btn-xs warning popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Sedang menunggu persetujuan dari HRD.' data-original-title='Status Klaim'>Pending</button>";
                                                                 $status = "";
                                                             } elseif($tampil['status']==2) {
-                                                                echo "<button class='btn btn-xs blue popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Klaim Anda telah diterima.' data-original-title='Status Klaims'>Diterima</button>";
+                                                                echo "<button class='btn btn-xs blue popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Klaim Anda telah diterima.' data-original-title='Status Klaim'>Diterima</button>";
                                                                 $status = "disabled";
                                                             } elseif($tampil['status']==3) {
                                                                 echo "<button class='btn btn-xs red popovers' data-container='body' data-trigger='hover' data-placement='bottom' data-content='Klaim Anda Ditolak!' data-original-title='Status Klaim'>Ditolak</button>";
